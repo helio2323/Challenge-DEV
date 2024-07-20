@@ -28,6 +28,16 @@
 
 <style scoped>
 
+.main-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    width: 100%;
+    height: 100%;
+    background-color: var(--BackCover);
+}
+
 .layout {
     display: flex;
     flex-direction: row;
