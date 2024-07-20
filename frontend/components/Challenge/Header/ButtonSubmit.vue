@@ -42,5 +42,12 @@
   .text {
     font-weight: bold;
   }
+
+  @media screen and (max-width: 600px) {
+        
+        .exit-button{
+            width: 100%;
+        }
+      }
   </style>
   
