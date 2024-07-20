@@ -11,9 +11,10 @@
   },
   "dependencies": {
     "@nuxt/ui": "^2.17.0",
+    "@nuxtjs/tailwindcss": "npm:@nuxtjs/tailwindcss@nightly",
     "nuxt": "^3.12.3",
-    "vue": "latest",
-    "@nuxtjs/tailwindcss": "npm:@nuxtjs/tailwindcss@nightly"
+    "nuxt-monaco-editor": "^1.2.9",
+    "vue": "latest"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "npm:@nuxtjs/tailwindcss@nightly"
