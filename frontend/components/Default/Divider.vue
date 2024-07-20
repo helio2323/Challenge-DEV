@@ -1,0 +1,7 @@
+<template>
+  <UDivider>
+  </UDivider>
+</template>
+
+
+
