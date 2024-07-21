@@ -8,7 +8,6 @@
     }"/>
 
 <div class="gap-4 my-24">
-    <DefaultDivider />
 
     <UVerticalNavigation :links="linklog"
     :ui="{
@@ -25,6 +24,11 @@ const route = useRoute()
 
 const linklog = [
     [{
+        label: "Administrador",
+        icon: 'i-heroicons-arrow-left-on-rectangle',
+        to: '/admlist'
+    }],
+    [{
         label: "Sair",
         icon: 'i-heroicons-arrow-left-on-rectangle'
     }]
@@ -35,19 +39,19 @@ const links = [
   [{
     label: 'Meu Progresso',
     icon: 'i-heroicons-user',
-    to: '/progresso',
+    to: '/meuprogresso',
 
   },
   {
     label: 'Desafios',
     icon: 'i-heroicons-light-bulb',
-    to: '/progresso',
+    to: '/desafios',
     
   },
   {
     label: 'Ranking',
     icon: 'i-heroicons-trophy',
-    to: '/progresso',
+    to: '/ranking',
     
   }, ]
 ]

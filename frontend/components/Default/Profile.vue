@@ -30,14 +30,22 @@ const items = [
     disabled: true
   }], [{
     label: 'Meu Progresso',
-    icon: 'i-heroicons-user'
+    icon: 'i-heroicons-user',
+    to: '/meuprogresso'
   }], [{
     label: 'Desafios',
-    icon: 'i-heroicons-light-bulb'
+    icon: 'i-heroicons-light-bulb',
+    to: '/desafios'
   }, {
     label: 'Ranking',
-    icon: 'i-heroicons-trophy'
+    icon: 'i-heroicons-trophy',
+    to: '/ranking'
   },], [{
+    label: 'Administrador',
+    icon: 'i-heroicons-lock-closed',
+    to: '/admlist'
+
+  }],[{
     label: 'Sair',
     icon: 'i-heroicons-arrow-left-on-rectangle'
   }]
