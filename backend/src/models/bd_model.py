@@ -20,6 +20,8 @@ class Language(Base):
         session.add(new_language)
         session.commit()
 
+        return new_language
+
     @staticmethod
     def search_language(language):
         return session.query(Language).filter_by(language=language).first()
@@ -54,6 +56,7 @@ class Response(Base):
         session.add(new_response)
         session.commit()
 
+        return new_response
     @staticmethod
     def search_response(response):
         return session.query(Response).filter_by(response=response).first()
@@ -107,6 +110,7 @@ class Questions(Base):
         session.add(new_question)
         session.commit()
 
+        return new_question
     @staticmethod
     def search_question(question):
         return session.query(Questions).filter_by(question=question).first()
@@ -128,13 +132,15 @@ class Questions(Base):
         question_obj.response_id = response_id
         question_obj.created_at = created_at
         session.commit()
-    
+
+        return question_obj
     @staticmethod
     def delete_question(id):
         question = session.query(Questions).filter_by(id=id).first()
         session.delete(question)
         session.commit()
-
+        
+        return "Question deleted"
 class User(Base):
     __tablename__ = "users"
 
@@ -196,6 +202,7 @@ class UserChallenge(Base):
         session.add(new_user_challenge)
         session.commit()
 
+        return new_user_challenge
     @staticmethod
     def search_user_challenge(user_id, challenge_id):
         return session.query(UserChallenge).filter_by(user_id=user_id, challenge_id=challenge_id).first()
@@ -221,6 +228,7 @@ class UserChallenge(Base):
         session.delete(user_challenge)
         session.commit()
 
+        return "User Challenge deleted"
 class Challenge(Base):
     __tablename__ = "challenges"
 
@@ -235,6 +243,7 @@ class Challenge(Base):
         session.add(new_challenge)
         session.commit()
 
+        return new_challenge
     @staticmethod
     def search_challenge(type_challenge):
         return session.query(Challenge).filter_by(type_challenge=type_challenge).first()
@@ -250,12 +259,14 @@ class Challenge(Base):
         challenge.xp_reward = xp_reward
         session.commit()
 
+        return challenge
     @staticmethod
     def delete_challenge(id):
         challenge = session.query(Challenge).filter_by(id=id).first()
         session.delete(challenge)
         session.commit()
 
+        return "Challenge deleted"
 class UserResponse(Base):
     __tablename__ = "users_responses"
     
@@ -279,6 +290,7 @@ class UserResponse(Base):
         session.add(new_user_response)
         session.commit()
 
+        return new_user_response
     @staticmethod
     def search_user_response(user_id, question_id):
         return session.query(UserResponse).filter_by(user_id=user_id, question_id=question_id).first()
@@ -296,10 +308,14 @@ class UserResponse(Base):
         user_response.responded_at = responded_at
         session.commit()
 
+        return user_response
     @staticmethod
     def delete_user_response(id):
         user_response = session.query(UserResponse).filter_by(id=id).first()
         session.delete(user_response)
         session.commit()
 
+        return "User Response deleted"
+    
 Base.metadata.create_all(engine)
+

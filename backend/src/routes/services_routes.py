@@ -6,7 +6,7 @@ from src.services.questions import *
 services_routes = Blueprint("services_routes", __name__)
 
 @services_routes.route("/newlanguage", methods=["POST"])
-async def new_language():
+async def newlanguage():
 
     data = request.json
 
@@ -16,11 +16,10 @@ async def new_language():
         )
     else:
         name = data.get("name")
-        created_at = data.get("created_at")
 
         result = create_language(name)
-
-        return result
+        print(result['language'])
+        return jsonify(result)
 
 @services_routes.route("/newquestion", methods=["POST"])
 async def new_question():
