@@ -5,6 +5,10 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'
 from sqlalchemy import Column, Integer, String, ForeignKey, Boolean, Date
 from sqlalchemy.orm import relationship
 from src.models.orm_conection import Base, engine, session  # Updated import
+from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy.orm.exc import NoResultFound
+
+
 
 
 class Language(Base):
@@ -155,27 +159,69 @@ class User(Base):
 
     @staticmethod
     def create_user(name, email, password):
-        new_user = User(name=name, email=email, password=password)
-        session.add(new_user)
-        session.commit()
-        return new_user
+        try:
+            new_user = User(name=name, email=email, password=password)
+            session.add(new_user)
+            session.commit()
+            return new_user
+        except SQLAlchemyError as e:
+            session.rollback()
+            print(f'Error creating user: {e}')
+            return None
 
     @staticmethod
     def search_user(email):
-        return session.query(User).filter_by(email=email).first()
-    
+        try:
+            user = session.query(User).filter_by(email=email).first()
+            return user
+        except NoResultFound:
+            return None
+        except SQLAlchemyError as e:
+            print(f'Error searching user: {e}')
+            return None
+         
+    def search_user_by_id(id):
+        try:
+            user = session.query(User).filter_by(id=id).first()
+            return user
+        except NoResultFound:
+            return None
+        except SQLAlchemyError as e:
+            print(f'Error searching user: {e}')
+            return None
+
     @staticmethod
     def get_all_users():
-        return session.query(User).all()
-    
+        try:
+            users = session.query(User).all()
+            return users
+        except SQLAlchemyError as e:
+            print(f'Error getting all users: {e}')
+            return None    
     @staticmethod
     def update_user(id, name, email, password):
-        user = session.query(User).filter_by(id=id).first()
-        user.name = name
-        user.email = email
-        user.password = password
-        session.commit()
-
+        try:
+            id = int(id)
+            # Verifica se o email já está em uso por outro usuário
+            existing_user = session.query(User).filter(User.email == email, User.id != id).first()
+            if existing_user:
+                print("O email já está em uso por outro usuário.")
+                return None
+            
+            user = session.query(User).filter_by(id=id).first()
+            if user:
+                user.name = name
+                user.email = email
+                user.password = password
+                session.commit()
+                return user
+            else:
+                print("Usuário não encontrado.")
+                return None
+        except SQLAlchemyError as e:
+            session.rollback()
+            print(f'Error updating user: {e}')
+            return None
 class UserChallenge(Base):
     __tablename__ = "users_challenges"
 
