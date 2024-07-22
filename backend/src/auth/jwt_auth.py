@@ -1,9 +1,6 @@
 import jwt
 from datetime import datetime, timedelta, timezone
-from dotenv import load_dotenv
 import os
-
-load_dotenv()
 
 secret = os.getenv("SECRET")
 
@@ -12,10 +9,10 @@ def token(userName, userId):
     payload = {
         'user': userName,
         'userId': userId,
-        'exp': datetime.now(timezone.utc) + timedelta(minutes=10)
+        'exp': exp_time
     }
     generateToken = jwt.encode(
-        payload,
+        payload,  # Payload deve ser passado diretamente
         secret,
         algorithm='HS256'
     )
