@@ -307,13 +307,25 @@ class Challenge(Base):
 
         return new_challenge
     @staticmethod
-    def search_challenge(type_challenge):
-        return session.query(Challenge).filter_by(type_challenge=type_challenge).first()
-
+    def search_challenge(id):
+        try:
+            challenge = session.query(Challenge).filter_by(id=id).first()
+            return challenge
+        except NoResultFound:
+            return None
+        except SQLAlchemyError as e:
+            print(f'Error searching challenge: {e}')
+            return None
+        
     @staticmethod
     def get_all_challenge():
-        return session.query(Challenge).all()
-    
+        try:
+            challenge = session.query(Challenge).all()
+            return challenge
+        except SQLAlchemyError as e:
+            print(f'Error getting all challenge: {e}')
+            return None
+            
     @staticmethod
     def update_challenge(id, type_challenge, xp_reward):
         challenge = session.query(Challenge).filter_by(id=id).first()

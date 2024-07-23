@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, make_response, request
 from src.services.userChallenges import create_user_challenge, update_user_challenge, get_all_user_challenge, get_one_user_challenge
+from src.services.challenges import get_all_challenges, get_one_challenge
 
 ChaRoutes = Blueprint("ChaRoutes", __name__)
 
@@ -61,5 +62,22 @@ async def updateUserChallenge():
         date_started = data.get("date_started")
         active = data.get("active")
         result = update_user_challenge(id, user_id, challenge_id, completed, date_completed, date_started, active)
+        
+        return result
+
+@ChaRoutes.route('challenges', methods=['GET'])
+async def challenges():
+    return get_all_challenges()
+
+@ChaRoutes.route('challenge', methods=['GET'])
+async def challenge():
+    data = request.json
+    if data is None:
+        return make_response(
+            jsonify({"message": "Bad Request"}), 400
+        )
+    else:
+        id = data.get("id")
+        result = get_one_challenge(id)
         
         return result
