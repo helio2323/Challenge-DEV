@@ -237,7 +237,8 @@ class UserChallenge(Base):
 
     @staticmethod
     def create_user_challenge(user_id, challenge_id, completed, date_completed, date_started, active):
-        new_user_challenge = UserChallenge(
+        try:
+            new_user_challenge = UserChallenge(
             user_id=user_id,
             challenge_id=challenge_id,
             completed=completed,
@@ -245,18 +246,33 @@ class UserChallenge(Base):
             date_started=date_started,
             active=active
         )
-        session.add(new_user_challenge)
-        session.commit()
+            session.add(new_user_challenge)
+            session.commit()
 
-        return new_user_challenge
+            return new_user_challenge
+        except SQLAlchemyError as e:
+            session.rollback()
+            print(f'Error creating user_challenge: {e}')
+            return None
     @staticmethod
-    def search_user_challenge(user_id, challenge_id):
-        return session.query(UserChallenge).filter_by(user_id=user_id, challenge_id=challenge_id).first()
-
+    def search_user_challenge(id, challenge_id):
+        try:
+            user_challenge = session.query(UserChallenge).filter_by(id=id, challenge_id=challenge_id).first()
+            return user_challenge
+        except NoResultFound:
+            return None
+        except SQLAlchemyError as e:
+            print(f'Error searching user_challenge: {e}')
+            return None
     @staticmethod
     def get_all_user_challenge():
-        return session.query(UserChallenge).all()
-    
+        try:
+            user_challenge = session.query(UserChallenge).all()
+            return user_challenge
+        except SQLAlchemyError as e:
+            print(f'Error getting all user_challenge: {e}')
+            return None
+            
     @staticmethod
     def update_user_challenge(id, user_id, challenge_id, completed, date_completed, date_started, active):
         user_challenge = session.query(UserChallenge).filter_by(id=id).first()
