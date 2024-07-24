@@ -1,0 +1,73 @@
+from flask import Blueprint, jsonify, make_response, request
+from src.utils.questionsVerify import questionVerify, submitQuestion
+from src.utils.pistonApi import execute_code
+
+qVerify = Blueprint("qVerify", __name__)
+
+@qVerify.route("/", methods=["GET"])
+def index():
+    return "Hello, World!"
+@qVerify.route("/verify", methods=["POST"])
+def verify():
+
+    data = request.json
+
+    type_question = data.get("type_question")
+    question_id = data.get("question_id")
+    questionResponse = data.get("questionresponse")
+    language = data.get("language")
+
+    if type_question == "code":
+        
+        code_response = execute_code(language, questionResponse)
+
+        response = questionVerify(question_id, code_response)
+
+        return jsonify({
+            "response": response,
+            "code_response": code_response})
+
+
+    if type_question == "quizz":
+
+        response = questionVerify(question_id, questionResponse)
+
+        return jsonify({
+            "response": response,
+            "code_response": questionResponse})
+
+    return "Invalid type"
+
+
+@qVerify.route("/submit", methods=["POST"])
+def submit():
+
+    data = request.json
+
+    type_question = data.get("type_question")
+    user_id = data.get("user_id")
+    question_id = data.get("question_id")
+    questionResponse = data.get("questionresponse")
+    language = data.get("language")
+
+    if type_question == "code":
+        
+        code_response = execute_code(language, questionResponse)
+
+        response = submitQuestion(question_id, user_id, code_response)
+
+        return jsonify({
+            "response": response,
+            "code_response": code_response})
+
+
+    if type_question == "quizz":
+
+        response = submitQuestion(question_id, user_id, questionResponse)
+
+        return jsonify({
+            "response": response,
+            "code_response": questionResponse
+        })
+
+    return "Invalid type"

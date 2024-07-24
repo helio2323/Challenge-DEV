@@ -58,7 +58,9 @@ def get_one_user(id):
     user_json = json.dumps({
         "id": user.id,
         "name": user.name,
-        "email": user.email
+        "email": user.email,
+        "xp": user.xp,
+        "level": user.level
     })
 
     return user_json

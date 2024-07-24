@@ -3,10 +3,6 @@ from src.auth.authentication import get_one_user, login_user, register_user, get
 
 routes = Blueprint("routes", __name__)
 
-@routes.route("/", methods=["POST"])
-async def index():
-    return 'Hello World'
-
 @routes.route("/register", methods=["POST"])
 async def register():
     
