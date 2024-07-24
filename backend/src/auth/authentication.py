@@ -50,7 +50,7 @@ def get_users():
     users = User.get_all_users()
     #transforma os objetos em JSON
     users = transform_objects_to_json(users, id="id", name="name", email="email")
-    print(users)
+
     return users
 
 def get_one_user(id):

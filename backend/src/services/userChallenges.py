@@ -71,6 +71,3 @@ def date_handler(obj):
     if isinstance(obj, date):
         return obj.isoformat()
     raise TypeError("Type not serializable")
-
-
-print(get_one_user_challenge(67, 1))
