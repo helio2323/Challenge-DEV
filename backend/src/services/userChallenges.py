@@ -34,7 +34,7 @@ def create_user_challenge(user_id, challenge_id, completed, date_completed, date
     process_challenges(1, 1)  # Daily challenge
     process_challenges(2, 7)  # Weekly challenge
 
-    return 'Challenges created or updated'
+    return 'Challenge not created, because active challenge'
 
 def get_all_user_challenge():
     useChallenge = UserChallenge()
