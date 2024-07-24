@@ -1,6 +1,7 @@
-from flask import Blueprint, jsonify, make_response, request
+from flask import Blueprint, json, jsonify, make_response, request
 from src.utils.questionsVerify import questionVerify, submitQuestion
 from src.utils.pistonApi import execute_code
+from src.services.lang_responses import get_all_languages, get_all_user_responses
 
 qVerify = Blueprint("qVerify", __name__)
 
@@ -8,7 +9,7 @@ qVerify = Blueprint("qVerify", __name__)
 def index():
     return "Hello, World!"
 @qVerify.route("/verify", methods=["POST"])
-def verify():
+async def verify():
 
     data = request.json
 
@@ -40,7 +41,7 @@ def verify():
 
 
 @qVerify.route("/submit", methods=["POST"])
-def submit():
+async def submit():
 
     data = request.json
 
@@ -71,3 +72,15 @@ def submit():
         })
 
     return "Invalid type"
+
+@qVerify.route("/languages", methods=["GET"])
+async def languages():
+    json_data = json.loads(get_all_languages())
+
+    return jsonify(json_data)
+
+@qVerify.route("/responses", methods=["GET"])
+async def responses():
+    json_data = json.loads(get_all_user_responses())
+
+    return jsonify(json_data)

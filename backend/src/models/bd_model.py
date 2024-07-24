@@ -32,7 +32,12 @@ class Language(Base):
     
     @staticmethod
     def get_all_languages():
-        return session.query(Language).all()
+        try:
+            languages = session.query(Language).all()
+            return languages
+        except SQLAlchemyError as e:
+            print(f'Error getting all languages: {e}')
+            return None
     
     @staticmethod
     def update_language(id, language):
