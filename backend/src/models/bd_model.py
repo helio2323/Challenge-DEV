@@ -46,6 +46,7 @@ class Language(Base):
         session.delete(lang)
         session.commit()
 
+"""
 class Response(Base):
     __tablename__ = "responses"
 
@@ -81,6 +82,7 @@ class Response(Base):
         session.delete(resp)
         session.commit()
 
+"""
 class Questions(Base):
     __tablename__ = "questions"
 
@@ -93,14 +95,14 @@ class Questions(Base):
     id_language = Column(Integer, ForeignKey("languages.id"))
     language = relationship("Language", back_populates="questions")  # Corrigido
     xp_reward = Column(Integer)
-    response_id = Column(Integer, ForeignKey("responses.id"))
-    responses = relationship("Response", back_populates="questions")  # Corrigido
+    response = Column(String)
     created_at = Column(Date)
     user_responses = relationship("UserResponse", back_populates="question")
 
     @staticmethod
-    def create_question(title, subtitle, example, type_question, question, id_language, xp_reward, response_id, created_at):
-        new_question = Questions(
+    def create_question(title, subtitle, example, type_question, question, id_language, xp_reward, response, created_at):
+        try:
+            new_question = Questions(
             title=title,
             subtitle=subtitle,
             example=example,
@@ -108,36 +110,54 @@ class Questions(Base):
             question=question,
             id_language=id_language,
             xp_reward=xp_reward,
-            response_id=response_id,
+            response=response,
             created_at=created_at
         )
-        session.add(new_question)
-        session.commit()
+            session.add(new_question)
+            session.commit()
+            return new_question
+        except SQLAlchemyError as e:
+            session.rollback()
+            print(f'Error creating question: {e}')
+            return None
 
         return new_question
     @staticmethod
-    def search_question(question):
-        return session.query(Questions).filter_by(question=question).first()
-    
+    def search_question(id):
+        try:
+            return session.query(Questions).filter_by(id=id).first()
+        except NoResultFound:
+            return None
+        except SQLAlchemyError as e:
+            print(f'Error searching question: {e}')
+            return None    
     @staticmethod
     def get_all_questions():
-        return session.query(Questions).all()
-    
+        # return session.query(Questions).all()
+        try:
+            return session.query(Questions).all()
+        except SQLAlchemyError as e:
+            print(f'Error getting all questions: {e}')
+            return None    
     @staticmethod
-    def update_question(id, title, subtitle, example, type_question, question, id_language, xp_reward, response_id, created_at):
-        question_obj = session.query(Questions).filter_by(id=id).first()
-        question_obj.title = title
-        question_obj.subtitle = subtitle
-        question_obj.example = example
-        question_obj.type_question = type_question
-        question_obj.question = question
-        question_obj.id_language = id_language
-        question_obj.xp_reward = xp_reward
-        question_obj.response_id = response_id
-        question_obj.created_at = created_at
-        session.commit()
-
-        return question_obj
+    def update_question(id, title, subtitle, example, type_question, question, id_language, xp_reward, response, created_at):
+        try:
+            question_obj = session.query(Questions).filter_by(id=id).first()
+            question_obj.title = title
+            question_obj.subtitle = subtitle
+            question_obj.example = example
+            question_obj.type_question = type_question
+            question_obj.question = question
+            question_obj.id_language = id_language
+            question_obj.xp_reward = xp_reward
+            question_obj.response = response
+            question_obj.created_at = created_at
+            session.commit()
+            return question_obj
+        except SQLAlchemyError as e:
+            session.rollback()
+            print(f'Error updating question: {e}')
+            return None
     @staticmethod
     def delete_question(id):
         question = session.query(Questions).filter_by(id=id).first()
@@ -347,18 +367,15 @@ class UserResponse(Base):
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey("users.id"))
     question_id = Column(Integer, ForeignKey("questions.id"))
-    response_id = Column(Integer, ForeignKey("responses.id"))
     user = relationship("User", back_populates="responses")
     question = relationship("Questions", back_populates="user_responses")  # Alterado
-    response = relationship("Response", back_populates="user_responses")  # Ensure this is correctly referenced
     responded_at = Column(Date)
 
     @staticmethod
-    def create_user_response(user_id, question_id, response_id, responded_at):
+    def create_user_response(user_id, question_id, responded_at):
         new_user_response = UserResponse(
             user_id=user_id,
             question_id=question_id,
-            response_id=response_id,
             responded_at=responded_at
         )
         session.add(new_user_response)
@@ -374,11 +391,10 @@ class UserResponse(Base):
         return session.query(UserResponse).all()
     
     @staticmethod
-    def update_user_response(id, user_id, question_id, response_id, responded_at):
+    def update_user_response(id, user_id, question_id, responded_at):
         user_response = session.query(UserResponse).filter_by(id=id).first()
         user_response.user_id = user_id
         user_response.question_id = question_id
-        user_response.response_id = response_id
         user_response.responded_at = responded_at
         session.commit()
 
