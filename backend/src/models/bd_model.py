@@ -242,6 +242,23 @@ class User(Base):
             session.rollback()
             print(f'Error updating user: {e}')
             return None
+    @staticmethod
+    def update_xp_level(id, xp, level):
+        try:
+            user = session.query(User).filter_by(id=id).first()
+            if user:
+                user.xp = xp
+                user.level = level
+                session.commit()
+                return user
+            else:
+                print("Usuário não encontrado.")
+                return None
+        except SQLAlchemyError as e:
+            session.rollback()
+            print(f'Error updating user: {e}')
+            return None
+            
 class UserChallenge(Base):
     __tablename__ = "users_challenges"
 
