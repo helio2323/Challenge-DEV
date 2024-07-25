@@ -22,17 +22,19 @@ async def createquestion():
         id_language = data.get("id_language")
         xp_reward = data.get("xp_reward")
         response = data.get("response")
-        created_at = data.get("created_at")
-        result = create_question(title, subtitle, example, type_question, question, id_language, xp_reward, response, created_at)
+        created_at = data.get("created_at"),
+        dificulty = data.get("dificulty")
+        result = create_question(title, subtitle, example, type_question, question, id_language, xp_reward, response, created_at, dificulty)
 
         return result
     
+
 
 @question_routes.route("getallquestions", methods=["GET"])
 async def getallquestions():
     return get_all_questions()
 
-@question_routes.route("getonequestion", methods=["GET"])
+@question_routes.route("getonequestion", methods=["POST"])
 async def getonequestion():
     data = request.json
     if data is None:
@@ -61,7 +63,19 @@ async def updatequestion():
         id_language = data.get("id_language")
         xp_reward = data.get("xp_reward")
         response = data.get("response")
-        created_at = data.get("created_at")
-        result = update_question(id, title, subtitle, example, type_question, question, id_language, xp_reward, response, created_at)
-        
+        created_at = data.get("created_at"),
+        dificulty = data.get("dificulty")
+        result = update_question(id, title, subtitle, example, type_question, question, id_language, xp_reward, response, created_at, dificulty)
         return jsonify({"message": "Question updated"})
+    
+@question_routes.route("deletequestion", methods=["DELETE"])
+async def deletequestion():
+    data = request.json
+    if data is None:
+        return make_response(
+            jsonify({"message": "Bad Request"}), 400
+        )
+    else:
+        id = data.get("id")
+        result = delete_question(id)
+        return jsonify({"message": "Question deleted"})

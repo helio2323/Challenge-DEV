@@ -49,12 +49,12 @@ watch(() => questionObj.value, (newObj) => {
     state.dificuldade = newObj.dificulty || '';
   }
 }, { deep: true });
+
 async function onSubmit(event: FormSubmitEvent<any>) {
   const selectLanguage = await getLanguages(state.linguagem, undefined);
   
   try {
-    const response = await updateQuestion(
-      questionObj.value?.id,
+    const response = await createQuestion(
       state.title,
       state.subtitle,
       state.exemplo,
@@ -67,7 +67,9 @@ async function onSubmit(event: FormSubmitEvent<any>) {
       state.dificuldade
     );
     console.log(response);
+
     navigateTo('/admlist');
+
   } catch (error) {
     console.log('Erro ao registrar:', error);
   }
@@ -85,8 +87,11 @@ const validate = (state: any): FormError[] => {
   if (!state.dificuldade) errors.push({ path: 'dificuldade', message: 'Required' })
   if (!state.resposta) errors.push({ path: 'resposta', message: 'Required' })
   if (!state.xpreward) errors.push({ path: 'xpreward', message: 'Required' })
+  
+  
   return errors
 }
+
 </script>
 
 <template>
@@ -101,7 +106,7 @@ const validate = (state: any): FormError[] => {
     </section>
 
     <section class="flex flex-row gap-5 w-full">
-      <UFormGroup class="w-full max-w-96 form-group" label="Tipo Desafio" name="people">
+      <UFormGroup class="w-full max-w-96 form-group" label="Tipo Desafio" name="tipodesafio">
         <UInputMenu v-model="state.tipodesafio" :options="people" />
       </UFormGroup>
       <UFormGroup class="w-full max-w-96 h-fit form-group" label="Exemplo" name="exemplo">
@@ -138,12 +143,11 @@ const validate = (state: any): FormError[] => {
     </section>
 
     <section class="flex flex-row gap-5 w-full justify-end">
-      <UButton class="w-48 h-8 justify-center rounded-xl" color="yellow" type="submit">
-        Atualizar Desafio
+      <UButton class="w-48 h-8 justify-center rounded-xl" type="submit">
+        + Desafio
       </UButton>
     </section>
   </UForm>
-  {{ questionObj }}
 </template>
 
 <style scoped>
