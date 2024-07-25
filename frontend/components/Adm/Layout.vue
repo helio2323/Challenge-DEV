@@ -4,10 +4,10 @@
                 <div class="main-header">
                     <h1>Inclusão de Desafio</h1>
                     <div class="button-adm">
-                        <AdmListButton class="button"/>
+                        <AdmListButton class="button" @click="handleClick"/>
                     </div>
                 </div>
-                <RankingDiarioTable />
+                <AdmTable />
             </section>
         </div>
 
@@ -15,6 +15,11 @@
 </template>
 
 <script setup>
+import { qType } from '~/api/statGlobal';
+
+const handleClick = () => {
+    qType.value = false;
+}
 
 </script>
 
@@ -66,13 +71,6 @@
     gap: 10px;
 }
 
-.button {
-    display: flex;
-    flex-direction: row;
-    width: 220px;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-}
+
 
 </style>

@@ -103,9 +103,10 @@ class Questions(Base):
     response = Column(String)
     created_at = Column(Date)
     user_responses = relationship("UserResponse", back_populates="question")
+    dificulty = Column(String)
 
     @staticmethod
-    def create_question(title, subtitle, example, type_question, question, id_language, xp_reward, response, created_at):
+    def create_question(title, subtitle, example, type_question, question, id_language, xp_reward, response, created_at, dificulty):
         try:
             new_question = Questions(
             title=title,
@@ -116,7 +117,8 @@ class Questions(Base):
             id_language=id_language,
             xp_reward=xp_reward,
             response=response,
-            created_at=created_at
+            created_at=created_at,
+            dificulty=dificulty
         )
             session.add(new_question)
             session.commit()
@@ -126,7 +128,6 @@ class Questions(Base):
             print(f'Error creating question: {e}')
             return None
 
-        return new_question
     @staticmethod
     def search_question(id):
         try:
@@ -145,7 +146,7 @@ class Questions(Base):
             print(f'Error getting all questions: {e}')
             return None    
     @staticmethod
-    def update_question(id, title, subtitle, example, type_question, question, id_language, xp_reward, response, created_at):
+    def update_question(id, title, subtitle, example, type_question, question, id_language, xp_reward, response, created_at, dificulty):
         try:
             question_obj = session.query(Questions).filter_by(id=id).first()
             question_obj.title = title
@@ -156,8 +157,11 @@ class Questions(Base):
             question_obj.id_language = id_language
             question_obj.xp_reward = xp_reward
             question_obj.response = response
-            question_obj.created_at = created_at
+            question_obj.created_at = created_at,
+            question_obj.dificulty = dificulty
             session.commit()
+            print(question_obj)
+
             return question_obj
         except SQLAlchemyError as e:
             session.rollback()

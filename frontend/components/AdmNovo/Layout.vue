@@ -6,7 +6,8 @@
 
                 <h3>Dados do Desafio</h3>
 
-                <AdmNovoFormDados />
+                <AdmNovoFormDados v-if="qType" />
+                <AdmNovoFormNovoDado v-if="!qType" />
             </div>
         </section>
     </div>
@@ -15,6 +16,8 @@
 </template>
 
 <script setup>
+
+import { qType } from '~/api/statGlobal';
 
 </script>
 
