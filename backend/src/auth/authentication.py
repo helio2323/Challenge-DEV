@@ -11,7 +11,6 @@ from src.utils.utlgen import transform_objects_to_json
 app = Flask(__name__)
 
 def login_user(email, password):
-    email = email.lower()
     user = User.search_user(email)
     
     if user is None:
@@ -23,7 +22,8 @@ def login_user(email, password):
             generateToken = token(user.name, user.id)
 
         return jsonify({"response": "User logged in",
-                        "token": generateToken}), 200
+                        "token": generateToken,
+                        "email": user.email}), 200
 
 
 

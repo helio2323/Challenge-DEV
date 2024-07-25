@@ -1,10 +1,8 @@
 <template>
-    <AdmLayout />
+    <slot></slot>
 </template>
 
 <script setup>
-
-
 
 </script>
 

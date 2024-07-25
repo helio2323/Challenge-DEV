@@ -4,9 +4,10 @@
             <div class="register-form">                 
                 <div class="register-form-itens">
                     <img width="50" height="50" src="https://img.icons8.com/material-sharp/24/FFFFFF/user-male-circle.png" alt="user-male-circle"/>
-                    <h1>Sejam bem vindo</h1>
-                    <p>Não tem uma conta? <a href="/register">Criar conta</a></p>
-                    <RegisterLoginForm />
+                    <h1>Crie sua conta</h1>
+                    <p>Utilize um e-mail e senha para se registrar</p>
+                    <RegisterForm />
+                    <p>Já tem uma conta? <a href="/login">Faça Login</a></p>
                 </div>
             </div>
 
