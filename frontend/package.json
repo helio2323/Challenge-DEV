@@ -5,6 +5,7 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
+    "dev:host": "nuxt --hostname '0' --port 8000",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
@@ -12,6 +13,8 @@
   "dependencies": {
     "@nuxt/ui": "^2.17.0",
     "@nuxtjs/tailwindcss": "npm:@nuxtjs/tailwindcss@nightly",
+    "axios": "^1.7.2",
+    "cors": "^2.8.5",
     "nuxt": "^3.12.3",
     "nuxt-monaco-editor": "^1.2.9",
     "vue": "latest"

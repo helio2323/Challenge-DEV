@@ -3,7 +3,7 @@
     <div class="main">
         <main class="main-header">
             <img class="logo" src="../shared/images/Logo.png">
-            <DefaultHeader/>    
+            <DefaultHeader />    
             <DefaultProfile />
         </main>
         <aside>

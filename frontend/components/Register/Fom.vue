@@ -1,0 +1,102 @@
+<script setup lang="ts">
+import type { FormError, FormSubmitEvent } from '#ui/types'
+
+import {register} from "../../api/authentication"
+
+const state = reactive({
+  email: "undefined@undefined",
+  password: "undefined",
+  nome: "undefined",
+  confirmesuasenha: "undefined"
+})
+
+
+const validate = (state: any): FormError[] => {
+  const errors = []
+  if (!state.nome) errors.push({ path: 'nome', message: 'Required' })
+  if (!state.email) errors.push({ path: 'email', message: 'Required' })
+  if (!state.password) errors.push({ path: 'password', message: 'Required' })
+  if (state.password !== state.confirmesuasenha) errors.push({ path: 'confirmesuasenha', message: 'Senha não confere' })
+  return errors
+
+}
+
+// chamada api para registro
+const toast = useToast()
+
+function onClick () {
+  alert('Clicked!')
+}
+async function onSubmit(event: FormSubmitEvent<any>) {
+    // Do something with data
+    const name = event.data.nome;
+    const email = event.data.email;
+    const password = event.data.password;
+    
+    try {
+        // Usar await na chamada da API
+        const response = await register(name, email, password);
+        
+        if (response.message === "User created") { // Verificar o conteúdo da resposta
+            // Redirecionar para login
+            window.location.href = '/login';
+        } else {
+            console.log("Erro: ", response.message);
+            
+        }
+    } catch (error) {
+        console.log('Erro ao registrar:', error);
+        
+        
+    }
+}
+
+</script>
+
+<template>
+<div>
+    <UForm :validate="validate" :state="state" class="space-y-4" @submit="onSubmit">
+    <UFormGroup label="Nome" name="nome">
+      <UInput v-model="state.nome" />
+    </UFormGroup>
+
+    <UFormGroup label="Email" name="email">
+      <UInput v-model="state.email" />
+    </UFormGroup>
+
+    <UFormGroup label="Senha" name="senha">
+      <UInput v-model="state.password" type="password" />
+    </UFormGroup>
+
+    <UFormGroup label="Confirme sua senha" name="confirmesuasenha">
+      <UInput v-model="state.confirmesuasenha" type="password" />
+    </UFormGroup>   
+
+    <UButton @click="toast.add({ title: 'Click me', click: onClick })" class="btn" type="submit">
+      Criar Conta
+    </UButton>
+
+  </UForm>
+</div>
+</template>
+
+<style scoped>
+
+div {
+    width: 100%;
+}
+
+.btn {
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    background-color: var(--Primary);
+    color: white;
+    font-weight: 600;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+}
+
+</style>
+
