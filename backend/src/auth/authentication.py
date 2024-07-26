@@ -23,7 +23,8 @@ def login_user(email, password):
 
         return jsonify({"response": "User logged in",
                         "token": generateToken,
-                        "email": user.email}), 200
+                        "email": user.email,
+                        "userid": user.id}), 200
 
 
 

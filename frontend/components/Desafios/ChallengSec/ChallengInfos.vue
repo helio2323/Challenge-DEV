@@ -1,7 +1,7 @@
 <template>
         <section class="challeng-infos">
             <h3 class="tittle">Descrição do curso</h3>
-            <p class="text-lg">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also </p>
+            <p class="text-lg">Aprenda os fundamentos e técnicas avançadas de programação com o nosso curso abrangente. Desde os conceitos básicos até os tópicos mais avançados, este curso foi projetado para equipá-lo com habilidades práticas e teóricas em várias linguagens de programação. Aproveite uma abordagem prática com projetos desafiadores e avaliações interativas que garantem uma compreensão sólida e aplicável. Através de exemplos reais e exercícios práticos, você estará preparado para enfrentar desafios de programação do mundo real. </p>
             <h3 class="tittle">Detalhes do curso</h3>
 
             <div class="flex items-center gap-1">

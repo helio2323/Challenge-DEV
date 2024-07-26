@@ -5,8 +5,8 @@ import { getUserInfos } from '@/api/userTips'
 const userName = ref('') // Criar uma variável reativa para userName
 
 onMounted(async () => {
-  
-  const userInfos = await getUserInfos(1)
+  const userId = parseInt(localStorage.getItem('userid') || '0')
+  const userInfos = await getUserInfos(userId)
   userName.value = userInfos.name // Atualizar o valor da variável reativa
 
   console.log(userName.value)

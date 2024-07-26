@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink class="nx-link" to="/">
+  <NuxtLink @click="handleReset" class="nx-link" to="/desafios">
     <button class="exit-button">
       <span class="icon">
         <img width="25" height="25" src="https://img.icons8.com/sf-black-filled/64/EAB308/exit.png" alt="exit"/>
@@ -11,6 +11,9 @@
 
 <script setup>
 // Lógica do componente, se necessário
+const handleReset = () => {
+  responseQuestion = undefined
+}
 </script>
 
 <style scoped>
