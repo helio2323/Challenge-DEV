@@ -35,6 +35,8 @@ async function onSubmit(event: FormSubmitEvent<any>) {
         
         const respStatus = response.response
 
+        console.log(email, password)
+
        if (respStatus === "User logged in") { // Verificar o conteúdo da resposta
             
             const respToken = response.token
@@ -42,8 +44,10 @@ async function onSubmit(event: FormSubmitEvent<any>) {
 
             localStorage.setItem('token', respToken);
             localStorage.setItem('email', respEmail);
+            localStorage.setItem('userid', response.userid);
+            localStorage.setItem('status', 'Logged in');
             
-            window.location.href = '/meuprogresso';
+            navigateTo('/desafios');
 
        } else {
             console.log("Erro: ", response.message);
@@ -68,7 +72,7 @@ async function onSubmit(event: FormSubmitEvent<any>) {
       <UInput v-model="state.password" type="password" />
     </UFormGroup>
 
-    <UButton @click="toast.add({ title: 'Click me', click: onClick })" class="btn" type="submit">
+    <UButton class="btn" type="submit">
       Login
     </UButton>
 

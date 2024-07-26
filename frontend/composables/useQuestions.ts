@@ -22,6 +22,7 @@ export default function useQuestions() {
             }
             const result = await response.json(); // Converte a resposta para JSON
             questions.value = result;
+            console.log(result);
         } catch (err) {
             error.value = err as Error;
             console.error('Erro ao fazer a requisição:', err);

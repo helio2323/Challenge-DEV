@@ -6,7 +6,7 @@ import { getLanguages } from "../../api/languageTips";
 import { questionObj } from "../../api/statGlobal";
 
 const people = ['quizz', 'code'];
-const linguagem = ['Python', 'Javascript'];
+const linguagem = ['Python', 'Javascript', 'Java', 'Rust'];
 const dificuldade = ['Easy', 'Medium', 'True Challenge'];
 
 const state = reactive({

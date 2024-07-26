@@ -1,7 +1,7 @@
 <template>
     <main class="main-photo">
         <section class="cover-photo">
-            <DesafiosPhotoComponentsMainText
+            <DesafiosPhotoComponentsMainText 
             text="PYTHON" />
             <div class="input-menu">
                 <DesafiosPhotoComponentsLanguageInput />
