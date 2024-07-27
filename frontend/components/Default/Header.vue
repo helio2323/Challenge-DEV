@@ -9,7 +9,6 @@ onMounted(async () => {
   const userInfos = await getUserInfos(userId)
   userName.value = userInfos.name // Atualizar o valor da variável reativa
 
-  console.log(userName.value)
 })
 
 const route = useRoute()

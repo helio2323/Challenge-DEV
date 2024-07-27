@@ -21,10 +21,14 @@ def login_user(email, password):
         if bcrypt.checkpw(password.encode('utf-8'), user.password.encode('utf-8')):
             generateToken = token(user.name, user.id)
 
-        return jsonify({"response": "User logged in",
-                        "token": generateToken,
-                        "email": user.email,
-                        "userid": user.id}), 200
+            return jsonify({"response": "User logged in",
+                            "token": generateToken,
+                            "email": user.email,
+                            "userid": user.id}), 200
+        else:
+            return jsonify({
+                "message": "Wrong password"
+            }), 401
 
 
 

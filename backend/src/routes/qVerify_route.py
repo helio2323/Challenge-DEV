@@ -1,4 +1,5 @@
 from flask import Blueprint, json, jsonify, make_response, request
+from src.services.ranking import create_ranking, create_daily_ranking, calculate_user_points_with_level
 from src.utils.questionsVerify import questionVerify, submitQuestion
 from src.utils.pistonApi import execute_code
 from src.services.lang_responses import get_all_languages, get_all_user_responses
@@ -84,3 +85,26 @@ async def responses():
     json_data = json.loads(get_all_user_responses())
 
     return jsonify(json_data)
+
+@qVerify.route("/ranking", methods=["GET"])
+async def ranking():
+    json_data = create_ranking()
+    print(json_data)
+    return json_data
+
+@qVerify.route("/dailyranking", methods=["GET"])
+async def dailyranking():
+    json_data = create_daily_ranking()
+    print(json_data)
+    return json_data
+
+@qVerify.route("/userlevel", methods=["POST"])
+async def userlevel():
+
+    data = request.json
+
+    userid = data.get("userid")
+
+    userL = calculate_user_points_with_level(userid)
+
+    return userL

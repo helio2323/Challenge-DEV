@@ -92,7 +92,7 @@ const imageUrl = computed(() => {
       flex-direction: column;
       align-items: start;
       justify-content: start;
-      gap: 20px;
+      gap: 5px;
   }
   
   .phone-infos{

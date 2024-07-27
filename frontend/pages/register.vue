@@ -6,7 +6,7 @@
                     <img width="50" height="50" src="https://img.icons8.com/material-sharp/24/FFFFFF/user-male-circle.png" alt="user-male-circle"/>
                     <h1>Crie sua conta</h1>
                     <p>Utilize um e-mail e senha para se registrar</p>
-                    <RegisterForm />
+                    <RegisterFom />
                     <p>Já tem uma conta? <a href="/login">Faça Login</a></p>
                 </div>
             </div>

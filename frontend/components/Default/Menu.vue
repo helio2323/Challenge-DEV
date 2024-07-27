@@ -30,10 +30,18 @@ const linklog = [
     }],
     [{
         label: "Sair",
-        icon: 'i-heroicons-arrow-left-on-rectangle'
+        icon: 'i-heroicons-arrow-left-on-rectangle',
+        click: () => handleLogout()
+        
     }]
 ]
 
+const handleLogout = () => {
+  localStorage.removeItem('token')
+  localStorage.removeItem('email')
+  localStorage.removeItem('userid')
+  navigateTo('/login')
+}
 
 const links = [
   [{

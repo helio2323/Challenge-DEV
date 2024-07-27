@@ -1,43 +1,47 @@
-<script setup lang="ts">
-const people = [{
-  id: 1,
-  usuario: 'Lindsay Walton',
-  desafios: '50',
-  xp: '5500',  
-}, {
-  id: 2,
-  usuario: 'Courtney Henry',
-  desafios: '50',
-  xp: '5500',
-}, 
-]
-
-const page = ref(1)
-const pageCount = 8
-
-const rows = computed(() => {
-  return people.slice((page.value - 1) * pageCount, (page.value) * pageCount)
-})
-</script>
-
 <template>
   <div>
-    <UTable :rows="rows" />
+    <UTable :rows="formattedRows" />
     <div class="flex w-full justify-end px-3 py-3.5 border-t border-gray-200 dark:border-gray-700">
-      <UPagination v-model="page" :page-count="pageCount" :total="people.length" />
+      <UPagination v-model:page="page" :page-count="pageCount" :total="props.data?.length || 0" />
     </div>
   </div>
 </template>
 
-<style scoped> 
+<script setup lang="ts">
+import { computed, defineProps, ref } from 'vue';
+
+const props = defineProps<{
+  data: Array<{ id: number; usuario: string; pontos: number; respostas: number }> | undefined;
+}>();
+
+const page = ref(1);
+const pageCount = 8;
+
+const rows = computed(() => {
+  if (props.data) {
+    return props.data.slice((page.value - 1) * pageCount, page.value * pageCount);
+  }
+  return [];
+});
+
+const formattedRows = computed(() => {
+  return rows.value.map(row => ({
+    usuario: row.usuario,
+    pontos: row.pontos,
+    respostas: row.respostas,
+  }));
+  
+});
+</script>
+
+<style scoped>
 div {
-    width: 100%;
-    align-items: end;
-    justify-content: end;
+  width: 100%;
+  align-items: end;
+  justify-content: end;
 }
 
 table {
-    width: 100%;
+  width: 100%;
 }
 </style>
-

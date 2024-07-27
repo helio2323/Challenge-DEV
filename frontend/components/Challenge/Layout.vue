@@ -12,11 +12,11 @@
       <section class="question-section">
         <ChallengeQuestion class="question" /> 
       </section>
-      <div class="code-sections" v-if="challengeStar.tipodesafio === 'code'">
+      <div class="code-sections" >
         <section class="code-section">
           <div class="monaco-ed">
             <div class="type-header-code">
-              <p>Code</p>
+              <p>{{ challengeStar.tipodesafio }}</p>
               <ChallengeQuestionModalQ class="modal"/>
             </div>
             <MonacoEditor
@@ -25,7 +25,7 @@
               v-model="value"
               :lang="monacoLanguage"
             />
-
+            {{ monacoLanguage }}
 
           </div>
         </section>
@@ -60,6 +60,7 @@ const handleClick = async () => {
   toast.add({ title: 'Validando sua resposta', click: handleClick })
 
   const questionvalues = challengeStar.value;
+
   const response = await verifyCode(
     questionvalues.tipodesafio,
     questionvalues.id_question,
