@@ -38,8 +38,8 @@ const progressMessage = computed(() => {
 
 <template>
   <UProgress size="lg" :value="temp" :max="maxPoints" :color="color" class="transition-all duration-500">
-    <template #indicator="{ percent }">
-      <div class="text-right" :style="{ width: `${percent}%` }">
+    <template #indicator="{ number }">
+      <div class="text-right" :style="{ width: `${number}%` }">
         <span :class="{
           'text-blue-500': color === 'blue',
           'text-amber-500': color === 'amber',
@@ -55,3 +55,4 @@ const progressMessage = computed(() => {
     </template>
   </UProgress>
 </template>
+
