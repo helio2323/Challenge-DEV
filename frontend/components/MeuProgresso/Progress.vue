@@ -1,26 +1,57 @@
 <script setup lang="ts">
-const temp = ref(10)
+import { ref, onMounted, computed } from 'vue';
+import { useCompLevel } from '@/composables/useLevel';
+
+const temp = ref(0);
+const maxPoints = ref(0);
+const level = ref(1);
+
+const { useLevel, getUserLevel } = useCompLevel();
+
+onMounted(async () => {
+  const userId = parseInt(localStorage.getItem('userid') || '0');
+  const response = await getUserLevel(userId);
+
+  if (response) {
+    temp.value = response.points;
+    maxPoints.value = response.points + response.next_level_points;
+    level.value = response.level;
+  }
+});
 
 const color = computed(() => {
-  switch (true) {
-  case temp.value < 10: return 'blue'
-  case temp.value < 20: return 'amber'
-  case temp.value < 30: return 'orange'
-  default: return 'red'
-  }
-})
+  const progress = (temp.value / maxPoints.value) * 100;
+  if (progress < 25) return 'blue';
+  if (progress < 50) return 'amber';
+  if (progress < 75) return 'orange';
+  return 'red';
+});
+
+const progressMessage = computed(() => {
+  const progress = (temp.value / maxPoints.value) * 100;
+  if (progress < 25) return `Too cold! - Level ${level.value}`;
+  if (progress < 50) return `Warm - Level ${level.value}`;
+  if (progress < 75) return `Hot - Level ${level.value}`;
+  return `🔥 Too hot! - Level ${level.value}`;
+});
 </script>
 
 <template>
-  <UProgress size="lg" :value="temp" :max="100" :color="color">
+  <UProgress size="lg" :value="temp" :max="maxPoints" :color="color" class="transition-all duration-500">
     <template #indicator="{ percent }">
       <div class="text-right" :style="{ width: `${percent}%` }">
-        <span v-if="temp < 10" class="text-blue-500">Too cold!</span>
-        <span v-else-if="temp < 20" class="text-amber-500">Warm</span>
-        <span v-else-if="temp < 30" class="text-orange-500">Hot</span>
-        <span v-else class="text-red-500 font-bold">🔥 Too hot!</span>
+        <span :class="{
+          'text-blue-500': color === 'blue',
+          'text-amber-500': color === 'amber',
+          'text-orange-500': color === 'orange',
+          'text-red-500 font-bold': color === 'red'
+        }">
+          {{ progressMessage }}
+        </span>
+      </div>
+      <div class="mt-2">
+        Points: {{ temp }} / {{ maxPoints }}
       </div>
     </template>
   </UProgress>
 </template>
-

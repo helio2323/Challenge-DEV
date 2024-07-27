@@ -4,6 +4,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'
 
 from src.utils.utlgen import transform_objects_to_json
 from src.models.bd_model import Language, UserResponse
+from flask import jsonify
 
 def get_all_user_responses():
     lang_responses = UserResponse.get_all_user_responses()

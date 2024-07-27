@@ -1,32 +1,58 @@
 <template>
     <main class="layout">
-        <div class="layout-diario">
-            <section class="main-section">
-                <div class="main-header">
-                    <h1>TOP USUÁRIO <strong>DIÁRIO</strong></h1>
-                </div>
-                <RankingDiarioTable />
-            </section>
-        </div>
-
-        <div class="layout-geral">
-            <section class="main-section">
-                <div class="main-header">
-                    <h1>TOP USUÁRIO <strong>SEMANAL</strong></h1>
-                </div>
-                <RankingDiarioTable />
-
-            </section>
-        </div>
+      <div class="layout-geral">
+        <section class="main-section">
+          <div class="main-header">
+            <h1>TOP USUÁRIO <strong>GERAL</strong></h1>
+          </div>
+          <RankingDiarioTable :data="weeklyRanking" />
+        </section>
+      </div>
+      <div class="layout-diario">
+        <section class="main-section">
+          <div class="main-header">
+            <h1>TOP USUÁRIO <strong>DIÁRIO</strong></h1>
+          </div>
+          <RankingDiarioTable :data="dailyRanking" />
+          
+        </section>
+      </div>
     </main>
+  </template>
+  
+  <script setup lang="ts">
+  import { ref, onMounted } from 'vue';
+  import useRanking from '@/composables/useRanking';
+  
+  const { fetchAllRanking, fetchDailyRanking } = useRanking();
+  const dailyRanking = ref<Array<{ id: number; usuario: string; pontos: number; respostas: number }>>([]);
+  const weeklyRanking = ref<Array<{ id: number; usuario: string; pontos: number; respostas: number }>>([]);
+  
+  onMounted(async () => {
+      try {
+          const resultDaily = await fetchDailyRanking();
+          dailyRanking.value = resultDaily.map((item: any) => ({
+              id: item.id,
+              usuario: item.name,
+              pontos: item.points,
+              respostas: item.responses,
+          }));
+  
+          const resultWeekly = await fetchAllRanking();
+          weeklyRanking.value = resultWeekly.map((item: any) => ({
+              id: item.id,
+              usuario: item.name,
+              pontos: item.points,
+              respostas: item.responses,
+          }));
+      } catch (error) {
+          console.error('Error fetching rankings:', error);
+      }
+  });
+  </script>
+  
 
-</template>
-
-<script setup>
-
-</script>
-
-<style scoped>
+  <style scoped>
 
 .main-section {
     display: flex;
@@ -110,3 +136,4 @@ strong{
 }
 
 </style>
+  

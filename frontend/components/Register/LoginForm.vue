@@ -4,8 +4,8 @@ import type { FormError, FormSubmitEvent } from '#ui/types'
 import {login} from "../../api/authentication"
 
 const state = reactive({
-  email: "undefined@undefined",
-  password: "undefined",
+  email: "",
+  password: "",
 })
 
 
@@ -51,10 +51,13 @@ async function onSubmit(event: FormSubmitEvent<any>) {
 
        } else {
             console.log("Erro: ", response.message);
+            //mensagem de alerta
+            errors.push({ path: 'password', message: 'Required' })
+
        }
     } catch (error) {
         console.log('Erro ao registrar:', error);
-        
+        toast.add({ title: 'Erro ao logar', click: onClick, color: 'red', position: 'top-0 right-50' })
     }
 }
 
@@ -62,14 +65,15 @@ async function onSubmit(event: FormSubmitEvent<any>) {
 
 <template>
 <div>
+
     <UForm :validate="validate" :state="state" class="space-y-4" @submit="onSubmit">
 
     <UFormGroup label="Email" name="email">
-      <UInput v-model="state.email" />
+      <UInput placeholder="Email" v-model="state.email" />
     </UFormGroup>
 
     <UFormGroup label="Senha" name="senha">
-      <UInput v-model="state.password" type="password" />
+      <UInput placeholder="Senha" v-model="state.password" type="password" />
     </UFormGroup>
 
     <UButton class="btn" type="submit">

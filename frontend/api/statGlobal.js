@@ -4,7 +4,7 @@ import {reactive} from 'vue';
 export const questionObj = ref({});
 export const qType = ref(true)
 export const languageFilter = ref(1)
-export const dificultyFilter = ref('Easy')
+export const dificultyFilter = ref('Medium')
 
 export const challengeStar = ref({})
 export const monacoLanguage = ref('')

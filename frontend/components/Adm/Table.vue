@@ -20,8 +20,8 @@ const columns = [{
   key: 'xp_reward',
   label: 'XP Reward'
 }, {
-  key: 'created_at',
-  label: 'Criado em'
+  key: 'language',
+  label: 'Linguagem'
 }, {
   key: 'actions'
 }];
@@ -119,8 +119,8 @@ onMounted(async () => {
       <template #xp_reward-data="{ row }">
         {{ row.xp_reward }}
       </template>
-      <template #created_at-data="{ row }">
-        {{ new Date(row.created_at).toLocaleDateString() }}
+      <template #language-data="{ row }">
+        {{  row.id_language }}
       </template>
       <template #actions-data="{ row }">
         <UDropdown :items="items(row)">

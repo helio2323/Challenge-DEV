@@ -4,10 +4,10 @@ import type { FormError, FormSubmitEvent } from '#ui/types'
 import {register} from "../../api/authentication"
 
 const state = reactive({
-  email: "undefined@undefined",
-  password: "undefined",
-  nome: "undefined",
-  confirmesuasenha: "undefined"
+  email: "",
+  password: "",
+  nome: "",
+  confirmesuasenha: ""
 })
 
 
@@ -16,7 +16,8 @@ const validate = (state: any): FormError[] => {
   if (!state.nome) errors.push({ path: 'nome', message: 'Required' })
   if (!state.email) errors.push({ path: 'email', message: 'Required' })
   if (!state.password) errors.push({ path: 'password', message: 'Required' })
-  if (state.password !== state.confirmesuasenha) errors.push({ path: 'confirmesuasenha', message: 'Senha não confere' })
+  if (state.password !== state.confirmesuasenha) errors.push({ path: 'confirmesuasenha', message: 'Invalid password' })
+
   return errors
 
 }
@@ -39,7 +40,7 @@ async function onSubmit(event: FormSubmitEvent<any>) {
         
         if (response.message === "User created") { // Verificar o conteúdo da resposta
             // Redirecionar para login
-            window.location.href = '/login';
+            navigateTo('/login')
         } else {
             console.log("Erro: ", response.message);
             
@@ -56,25 +57,25 @@ async function onSubmit(event: FormSubmitEvent<any>) {
 <template>
 <div>
     <UForm :validate="validate" :state="state" class="space-y-4" @submit="onSubmit">
-    <UFormGroup label="Nome" name="nome">
-      <UInput v-model="state.nome" />
-    </UFormGroup>
+      <UFormGroup label="Nome" name="nome">
+        <UInput placeholder="Nome" v-model="state.nome" />
+      </UFormGroup>
 
-    <UFormGroup label="Email" name="email">
-      <UInput v-model="state.email" />
-    </UFormGroup>
+      <UFormGroup label="Email" name="email">
+        <UInput placeholder="Email" v-model="state.email" />
+      </UFormGroup>
 
-    <UFormGroup label="Senha" name="senha">
-      <UInput v-model="state.password" type="password" />
-    </UFormGroup>
+      <UFormGroup label="Senha" name="password">
+        <UInput placeholder="Senha" v-model="state.password" type="password" />
+      </UFormGroup>
 
-    <UFormGroup label="Confirme sua senha" name="confirmesuasenha">
-      <UInput v-model="state.confirmesuasenha" type="password" />
-    </UFormGroup>   
+      <UFormGroup label="Confirme sua senha" name="confirmesuasenha">
+        <UInput placeholder="Confirme sua senha" v-model="state.confirmesuasenha" type="password" />
+      </UFormGroup>   
 
-    <UButton @click="toast.add({ title: 'Click me', click: onClick })" class="btn" type="submit">
-      Criar Conta
-    </UButton>
+      <UButton @click="toast.add({ title: 'Click me', click: onClick })" class="btn" type="submit">
+        Criar Conta
+      </UButton>
 
   </UForm>
 </div>
