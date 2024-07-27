@@ -102,17 +102,16 @@ def calculate_user_points(user_id):
     for response in responses:
         if isinstance(response, dict) and response.get('user_id') == user_id:
             responseDate = parse_date(response.get('responded_at'))
-            if responseDate.date() == today:
-                user_data['responses'] += 1
-                quest = get_one_questions(response.get('question_id'))
-                quest = json.loads(quest)
-                user_data['points'] += quest['xp_reward']
+            user_data['responses'] += 1
+            quest = get_one_questions(response.get('question_id'))
+            quest = json.loads(quest)
+            user_data['points'] += quest['xp_reward']
 
     return user_data
 
 def calculate_level(points):
     # Define os pontos necessários para o primeiro nível
-    base_points = 1000
+    base_points = 500
     level = 1
 
     while points >= base_points:
@@ -131,5 +130,4 @@ def calculate_user_points_with_level(user_id):
     level, next_level_points = calculate_level(user_data['points'])
     user_data['level'] = level
     user_data['next_level_points'] = next_level_points
-
     return user_data
