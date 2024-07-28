@@ -42,10 +42,11 @@ onMounted(async () => {
     await fetchAllQuestions();
     userResponses.value = await getResponses(); // Obtém as respostas do usuário
     
+    
     // Filtra as perguntas marcando se foram respondidas
     filteredQuestions.value = questions.value.map(question => ({
         ...question,
-        responded: userResponses.value.some(response => response.question_id === question.id)
+        responded: userResponses.value.some(response => response.question_id === question.id && response.user_id === Number(localStorage.getItem('userid')))
     }));
 });
 

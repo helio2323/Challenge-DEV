@@ -2,7 +2,7 @@
 <div class="container">
     <div class="main">
         <main class="main-header">
-            <img class="logo" src="../shared/images/Logo.png">
+            <img class="logo" src="../shared/images/Logo.png" @click="handleIndex">
             <DefaultHeader />    
             <DefaultProfile />
         </main>
@@ -21,6 +21,10 @@
 
 <script setup>
 
+const handleIndex = () => {
+    navigateTo('/meuprogresso')
+}
+
 </script>
 
 <style scoped>
@@ -28,6 +32,7 @@
     width: 150px;
     height: 100px;
     object-fit: contain;
+    cursor: pointer;
 }
 
 .container{
@@ -47,6 +52,7 @@
     display: flex;
     flex-direction: column;
     height: 100vh; /* Garante que ocupe a altura total da viewport */
+    
 }
 
 .main-header {

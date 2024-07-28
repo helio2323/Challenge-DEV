@@ -143,7 +143,6 @@ const validate = (state: any): FormError[] => {
       </UButton>
     </section>
   </UForm>
-  {{ questionObj }}
 </template>
 
 <style scoped>

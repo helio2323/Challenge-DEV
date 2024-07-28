@@ -8,14 +8,12 @@ onMounted(async () => {
   const userId = parseInt(localStorage.getItem('userid') || '0')
   const userInfos = await getUserInfos(userId)
   userName.value = userInfos.name // Atualizar o valor da variável reativa
-
+  console.log(userId)
 })
 
 const route = useRoute()
 const links = computed(() => [{ // Usar computed para reagir às mudanças
-  icon: 'i-heroicons-sun',
-}, {
-  icon: 'i-heroicons-bell',
+
 }, {
   label: userName.value, // Usar o valor da variável reativa
   avatar: {

@@ -67,8 +67,8 @@
         <li><a href="#Instalação">Instalação</a></li>
       </ul>
     </li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#Licença">Licença</a></li>
+    <li><a href="#desenvolvedores">Desenvolvedores</a></li>
   </ol>
 </details>
 
@@ -160,7 +160,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTACT -->
-## Contact
+## Desenvolvedores
 
 | Foto                                                       | Nome                                                 | Cargo                                                       |
 | ---------------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |

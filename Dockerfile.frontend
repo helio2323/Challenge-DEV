@@ -1,0 +1,32 @@
+# Use uma imagem do Node.js como base
+FROM node:18-alpine as builder
+
+# Define o diretório de trabalho dentro do contêiner
+WORKDIR /app
+
+# Copia os arquivos de manifesto e de bloqueio de pacotes para o diretório de trabalho
+COPY frontend/package.json frontend/package-lock.json ./
+
+# Instala as dependências do projeto
+RUN npm install
+
+# Copia o restante dos arquivos do projeto para o diretório de trabalho
+COPY frontend/ .
+
+# Compila o projeto
+RUN npm run build
+
+# Utilize uma imagem final para executar a aplicação
+FROM node:18-alpine as runner
+
+# Define o diretório de trabalho dentro do contêiner
+WORKDIR /app
+
+# Copia os arquivos do builder para o diretório de trabalho
+COPY --from=builder /app .
+
+# Exponha a porta na qual a aplicação irá rodar
+EXPOSE 3000
+
+# Comando para rodar a aplicação
+CMD ["npm", "run", "start"]

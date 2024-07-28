@@ -1,0 +1,22 @@
+# Use uma imagem do Python como base para o backend
+FROM python:3.12.3
+
+# Atualiza o pip para a versão mais recente
+RUN pip install --upgrade pip
+
+# Define o diretório de trabalho dentro do contêiner
+WORKDIR /app
+
+# Copia o arquivo de requisitos para o diretório de trabalho
+COPY backend/requirements.txt ./
+
+# Instala as dependências do backend
+RUN pip install -r requirements.txt
+
+# Copia o restante dos arquivos do backend para o diretório de trabalho
+COPY backend/ .
+
+# Comando para rodar a aplicação backend
+CMD ["python3", "main.py"]
+
+

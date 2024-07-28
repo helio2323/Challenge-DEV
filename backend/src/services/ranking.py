@@ -111,7 +111,7 @@ def calculate_user_points(user_id):
 
 def calculate_level(points):
     # Define os pontos necessários para o primeiro nível
-    base_points = 500
+    base_points = 100
     level = 1
 
     while points >= base_points:

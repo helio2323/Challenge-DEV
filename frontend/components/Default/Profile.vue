@@ -23,16 +23,40 @@
 </template>
 
 <script setup lang="ts">
-const items = [
+
+import { ref, onMounted, computed } from 'vue'
+import { getUserInfos } from '@/api/userTips'
+import { useRouter } from 'vue-router'
+
+const userName = ref('') // Criar uma variável reativa para userName
+const router = useRouter()
+
+onMounted(async () => {
+  const userId = parseInt(localStorage.getItem('userid') || '0')
+  const userInfos = await getUserInfos(userId)
+  userName.value = userInfos.name // Atualizar o valor da variável reativa
+  console.log(userId)
+})
+
+const handleLogout = () => {
+  localStorage.removeItem('token')
+  localStorage.removeItem('email')
+  localStorage.removeItem('userid')
+  router.push('/login')
+}
+
+const items = computed(() => [
   [{
-    label: 'ben@example.com',
+    label: userName.value,
     slot: 'account',
     disabled: true
-  }], [{
+  }], 
+  [{
     label: 'Meu Progresso',
     icon: 'i-heroicons-user',
     to: '/meuprogresso'
-  }], [{
+  }], 
+  [{
     label: 'Desafios',
     icon: 'i-heroicons-light-bulb',
     to: '/desafios'
@@ -40,17 +64,21 @@ const items = [
     label: 'Ranking',
     icon: 'i-heroicons-trophy',
     to: '/ranking'
-  },], [{
+  }], 
+  [{
     label: 'Administrador',
     icon: 'i-heroicons-lock-closed',
     to: '/admlist'
-
-  }],[{
+  }], 
+  [{
     label: 'Sair',
-    icon: 'i-heroicons-arrow-left-on-rectangle'
+    icon: 'i-heroicons-arrow-left-on-rectangle',
+    click: () => handleLogout()
   }]
-]
+])
+
 </script>
+
 
 <style scoped>
 .profile{
