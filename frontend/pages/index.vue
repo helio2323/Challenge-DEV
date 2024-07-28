@@ -1,11 +1,14 @@
 <template>
     <div>
-    <h1>index</h1>
+        <IndexLayout />
     </div>
 </template>
 
 <script setup>
 
+definePageMeta({
+    layout: 'empty',
+})
 </script>
 
 <style lang="scss" scoped>

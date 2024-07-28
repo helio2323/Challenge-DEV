@@ -3,7 +3,8 @@
         <section class="main-section">
             <MeuProgressoCardProfile />
             <MeuProgressoProgress />
-            <h2>Conquistas</h2>
+            <!-- 
+                        <h2>Conquistas</h2>
 
             <div class="conquistas-section">
                 <div class="conquistas">
@@ -14,6 +15,7 @@
                     <MeuProgressoCardLinguagem />
                 </div>
             </div>
+            -->
         </section>
     </div>
 </template>

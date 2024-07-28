@@ -63,6 +63,6 @@ def submitQuestion(question_id, user_id, responseQuestion):
     
         return 'Question answered'
     else:
-        return "Question is not correct"
+        return "Question incorrect"
 
 

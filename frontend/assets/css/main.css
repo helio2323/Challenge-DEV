@@ -1,9 +1,58 @@
 :root{
-    --Primary: #00C16A;
+    --Primary: #03C988;
     --Secondary: #3B82F6;
     --Tertiary: #EAB308;
-    --Background: #0F172A;
-    --BackCover: #131E2C;
+    --Background: #061139;
+    --BackCover: #121C44;
     --Gray700: #334155;
 
+}
+
+body{
+    font-family: sans-serif;
+}
+
+h1 {
+    font-size: 50px;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 40px;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+/* Para telas menores que 1200px */
+@media (max-width: 1366px) {
+    h1 {
+        font-size: 40px;
+    }
+    .card-features {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Para telas menores que 900px */
+@media (max-width: 950px) {
+    h1 {
+        font-size: 30px;
+    }
+    .card-features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Para telas menores que 600px */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 30px;
+    }
+    .card-features {
+        grid-template-columns: 1fr;
+    }
 }

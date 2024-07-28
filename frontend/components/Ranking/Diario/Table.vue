@@ -2,7 +2,7 @@
   <div>
     <UTable :rows="formattedRows" />
     <div class="flex w-full justify-end px-3 py-3.5 border-t border-gray-200 dark:border-gray-700">
-      <UPagination v-model:page="page" :page-count="pageCount" :total="props.data?.length || 0" />
+      <UPagination v-model="page" :page="page" :page-count="pageCount" :total="props.data?.length || 0" />
     </div>
   </div>
 </template>
