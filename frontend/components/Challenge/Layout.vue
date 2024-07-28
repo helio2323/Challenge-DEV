@@ -25,8 +25,6 @@
               v-model="value"
               :lang="monacoLanguage"
             />
-            {{ monacoLanguage }}
-
           </div>
         </section>
         <section class="code-section console">

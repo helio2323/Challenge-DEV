@@ -22,33 +22,7 @@ const state = reactive({
 });
 
 // Inicializa o estado com base em `questionObj` quando o componente é montado
-onMounted(() => {
-  if (questionObj && Object.keys(questionObj).length) {
-    state.title = questionObj.value?.title || '';
-    state.subtitle = questionObj.value?.subtitle || '';
-    state.tipodesafio = questionObj.value?.type_question || '';
-    state.exemplo = questionObj.value?.example || '';
-    state.pergunta = questionObj.value?.question || '';
-    state.xpreward = parseInt(questionObj.value?.xp_reward || '0', 10); // Converta para número inteiro
-    state.resposta = questionObj.value?.response || '';
-    state.linguagem = questionObj.value?.id_language || '';
-    state.dificuldade = questionObj.value?.dificulty || '';
-  }
-});
 
-watch(() => questionObj.value, (newObj) => {
-  if (newObj && Object.keys(newObj).length) {
-    state.title = newObj.title || '';
-    state.subtitle = newObj.subtitle || '';
-    state.tipodesafio = newObj.type_question || '';
-    state.exemplo = newObj.example || '';
-    state.pergunta = newObj.question || '';
-    state.xpreward = parseInt(newObj.xp_reward || '0', 10); // Converta para número inteiro
-    state.resposta = newObj.response || '';
-    state.linguagem = newObj.id_language || '';
-    state.dificuldade = newObj.dificulty || '';
-  }
-}, { deep: true });
 
 async function onSubmit(event: FormSubmitEvent<any>) {
   const selectLanguage = await getLanguages(state.linguagem, undefined);

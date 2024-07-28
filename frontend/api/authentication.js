@@ -5,7 +5,7 @@ export async function register(nome, email, password) {
         myHeaders.append("Content-Type", "application/json");
 
         const raw = JSON.stringify({
-            "nome": nome,
+            "name": nome,
             "email": email,
             "password": password
         });

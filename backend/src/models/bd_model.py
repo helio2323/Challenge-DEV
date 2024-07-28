@@ -183,10 +183,11 @@ class User(Base):
     challenges = relationship("UserChallenge", back_populates="user")
     responses = relationship("UserResponse", back_populates="user")
 
+
     @staticmethod
     def create_user(name, email, password):
         try:
-            new_user = User(name=name, email=email, password=password)
+            new_user = User(name=name, email=email, password=password, xp=0, level=1)
             session.add(new_user)
             session.commit()
             return new_user

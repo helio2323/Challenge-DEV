@@ -43,6 +43,8 @@ main {
     display: flex;
     flex-direction: row;
     gap: 20px;
+    align-items: center;
+    justify-content: center
 }
 
 .register-form {
@@ -56,8 +58,10 @@ main {
 }
 
 .register-form-itens h1 {
-    font-size: 48px;
+    font-size: 40px;
     font-weight: 600;
+    width: 100%;
+    text-align: center;
 }
 
 .register-form-itens p {

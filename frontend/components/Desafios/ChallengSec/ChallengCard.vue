@@ -1,5 +1,5 @@
 <template>
-  <div :style="{ border: isResponded ? '1px solid #00C16A' : '1px none #fff' }" class="challenge-card">
+  <div :style="{ border: isResponded ? '1px solid #00C16A' : '1px none #fff' }" class="challenge-card" @click="startChallenge">
     <div class="challenge-icon">
       <img :src="srcUrl" alt="Challenge Icon">
     </div>
