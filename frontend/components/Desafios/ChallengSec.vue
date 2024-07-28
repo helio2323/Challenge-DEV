@@ -87,8 +87,8 @@ const imageUrl = computed(() => {
       width: 100%;
       display: flex;
       flex-direction: column;
-      align-items: start;
       justify-content: start;
+      align-items: start;
       gap: 5px;
   }
   
