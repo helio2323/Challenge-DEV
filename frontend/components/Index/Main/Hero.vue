@@ -8,7 +8,7 @@
                 ganhando pontos e evoluindo junto a outros desenvolvedores.</p>
 
                 <div class="flex flex-row justify-center gap-x-[20px]">
-                    <UButton class="text-xl h-14 btn justify-center align-middle" type="submit">
+                    <UButton @click="handleGOTO" class="text-xl h-14 btn justify-center align-middle" type="submit">
                     Começar Agra!
                     </UButton>
                     <NuxtLink to="https://github.com/helio2323/OneBitDev" target="_blank" >
@@ -33,6 +33,9 @@
 </template>
 
 <script setup>
+const handleGOTO = () => {
+    navigateTo('/register');
+}
 </script>
 
 <style scoped>
