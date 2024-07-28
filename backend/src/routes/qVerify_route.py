@@ -38,7 +38,7 @@ async def verify():
             "response": response,
             "code_response": questionResponse})
 
-    return "Invalid type"
+    return jsonify({"message": "Invalid type"})
 
 
 @qVerify.route("/submit", methods=["POST"])

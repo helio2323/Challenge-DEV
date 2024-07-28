@@ -2,14 +2,11 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
 
-from sqlalchemy import Column, Integer, String, ForeignKey, Boolean, Date
+from sqlalchemy import Column, Integer, String, ForeignKey, Boolean, Date, Text
 from sqlalchemy.orm import relationship
 from src.models.orm_conection import Base, engine, session  # Updated import
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm.exc import NoResultFound
-
-
-
 
 class Language(Base):
     __tablename__ = "languages"
@@ -96,7 +93,7 @@ class Questions(Base):
     subtitle = Column(String)
     example = Column(String)
     type_question = Column(String)
-    question = Column(String)
+    question = Column(Text, nullable=False)
     id_language = Column(Integer, ForeignKey("languages.id"))
     language = relationship("Language", back_populates="questions")  # Corrigido
     xp_reward = Column(Integer)

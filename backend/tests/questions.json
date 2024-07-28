@@ -1,0 +1,76 @@
+{
+    "questions": [
+        {
+            "title": "Fundamentos de Python",
+            "subtitle": "Variáveis e Tipos de Dados",
+            "example": "Exemplo: x = 5",
+            "type_question": "quizz",
+            "question": "Qual das opções abaixo é um tipo de dado em Python?<br>A) int<br>B) string<br>C) list<br>D) Todas as anteriores",
+            "id_language": 1,
+            "xp_reward": 10,
+            "response": "D",
+            "created_at": "2024-07-28",
+            "difficulty": "Easy"
+        },
+        {
+            "title": "Operadores Aritméticos",
+            "subtitle": "Operações Básicas",
+            "example": "Exemplo: 5 + 3",
+            "type_question": "quizz",
+            "question": "Qual o resultado de 3 + 2 * 2?<br>A) 7<br>B) 10<br>C) 9<br>D) 8",
+            "id_language": 1,
+            "xp_reward": 15,
+            "response": "A",
+            "created_at": "2024-07-28",
+            "difficulty": "Medium"
+        },
+        {
+            "title": "Funções em Python",
+            "subtitle": "Definindo Funções",
+            "example": "Exemplo: def minha_funcao():",
+            "type_question": "code",
+            "question": "Crie uma função chamada 'soma' que receba dois números como parâmetros e retorne a soma deles. Imprima o resultado da soma para validação. Por exemplo, soma(7, 3) deve imprimir 10.",
+            "id_language": 1,
+            "xp_reward": 20,
+            "response": "10",
+            "created_at": "2024-07-28",
+            "difficulty": "Medium"
+        },
+        {
+            "title": "Estruturas de Controle",
+            "subtitle": "Loops",
+            "example": "Exemplo: for i in range(5):",
+            "type_question": "code",
+            "question": "Escreva um loop que imprima os números de 1 a 5, cada um em uma linha separada.",
+            "id_language": 1,
+            "xp_reward": 15,
+            "response": "1<br>2<br>3<br>4<br>5",
+            "created_at": "2024-07-28",
+            "difficulty": "Easy"
+        },
+        {
+            "title": "Compreensão de Listas",
+            "subtitle": "List Comprehensions",
+            "example": "Exemplo: [x for x in range(5)]",
+            "type_question": "quizz",
+            "question": "Qual das opções cria uma lista com os números pares de 0 a 10?<br>A) [x for x in range(10) if x % 2 == 0]<br>B) [x for x in range(11) if x % 2 == 0]<br>C) [x for x in range(10) if x % 2 != 0]<br>D) [x for x in range(11) if x % 2 != 0]",
+            "id_language": 1,
+            "xp_reward": 20,
+            "response": "B",
+            "created_at": "2024-07-28",
+            "difficulty": "Medium"
+        },
+        {
+            "title": "Manipulação de Strings",
+            "subtitle": "Métodos de String",
+            "example": "Exemplo: 'hello'.upper()",
+            "type_question": "code",
+            "question": "Escreva um código que receba uma string e retorne a mesma string com todas as letras em maiúsculas. Imprima o resultado para validação. Por exemplo, 'hello' deve imprimir 'HELLO'.",
+            "id_language": 1,
+            "xp_reward": 25,
+            "response": "HELLO",
+            "created_at": "2024-07-28",
+            "difficulty": "True Challenge"
+        }
+    ]
+}
