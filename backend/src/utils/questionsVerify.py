@@ -26,6 +26,7 @@ def questionVerify(id, responseQuestion):
     question = json.loads(question)
     question = question["response"].lower()
 
+    print(question, responseQuestion)
     if question == responseQuestion:
         return "Question correct"
     else:
