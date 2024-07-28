@@ -21,7 +21,7 @@ const validate = (state: any): FormError[] => {
 const toast = useToast()
 
 function onClick () {
-  alert('Clicked!')
+  alert('Tentando logar...')
 }
 async function onSubmit(event: FormSubmitEvent<any>) {
     // Do something with data

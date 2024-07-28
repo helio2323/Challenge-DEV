@@ -8,7 +8,7 @@ export default function useQuestions() {
     const fetchAllQuestions = async () => {
         loading.value = true;
         try {
-            const response = await fetch("http://127.0.0.1:5000/api/v1/getallquestions", {
+            const response = await fetch("http://localhost:5000/api/v1/getallquestions", {
                 method: 'GET',
                 headers: {
                     "Content-Type": "application/json",
@@ -46,7 +46,7 @@ export default function useQuestions() {
         };
     
         try {
-            const response = await fetch("http://127.0.0.1:5000/api/v1/getonequestion", requestOptions);
+            const response = await fetch("http://localhost:5000/api/v1/getonequestion", requestOptions);
             
             if (!response.ok) {
                 throw new Error('Network response was not ok');
