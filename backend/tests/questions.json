@@ -44,7 +44,7 @@
             "question": "Escreva um loop que imprima os números de 1 a 5, cada um em uma linha separada.",
             "id_language": 1,
             "xp_reward": 15,
-            "response": "1<br>2<br>3<br>4<br>5",
+            "response": "12345",
             "created_at": "2024-07-28",
             "difficulty": "Easy"
         },
@@ -95,18 +95,6 @@
             "response": "B",
             "created_at": "2024-07-28",
             "difficulty": "Medium"
-        },
-        {
-            "title": "Manipulação de Arquivos",
-            "subtitle": "Leitura e Escrita de Arquivos",
-            "example": "Exemplo: open('arquivo.txt', 'r')",
-            "type_question": "code",
-            "question": "Escreva um código que abra um arquivo chamado 'dados.txt' em modo de leitura e imprima seu conteúdo. Imprima o conteúdo do arquivo para validação.",
-            "id_language": 1,
-            "xp_reward": 30,
-            "response": "Conteúdo do arquivo 'dados.txt'",
-            "created_at": "2024-07-28",
-            "difficulty": "True Challenge"
         },
         {
             "title": "Classes e Objetos",
@@ -164,7 +152,7 @@
             "question": "Escreva um loop que imprima os números de 1 a 5, cada um em uma linha separada.",
             "id_language": 2,
             "xp_reward": 15,
-            "response": "1<br>2<br>3<br>4<br>5",
+            "response": "12345",
             "created_at": "2024-07-28",
             "difficulty": "Easy"
         },
@@ -215,18 +203,6 @@
             "response": "A",
             "created_at": "2024-07-28",
             "difficulty": "Medium"
-        },
-        {
-            "title": "Manipulação de Arquivos",
-            "subtitle": "Leitura e Escrita de Arquivos",
-            "example": "Exemplo: fs.readFile('arquivo.txt', 'utf8', callback)",
-            "type_question": "code",
-            "question": "Escreva um código que abra um arquivo chamado 'dados.txt' em modo de leitura e imprima seu conteúdo. Imprima o conteúdo do arquivo para validação.",
-            "id_language": 2,
-            "xp_reward": 30,
-            "response": "Conteúdo do arquivo 'dados.txt'",
-            "created_at": "2024-07-28",
-            "difficulty": "True Challenge"
         },
         {
             "title": "Classes e Objetos",
@@ -284,7 +260,7 @@
             "question": "Escreva um loop que imprima os números de 1 a 5, cada um em uma linha separada.",
             "id_language": 3,
             "xp_reward": 15,
-            "response": "1<br>2<br>3<br>4<br>5",
+            "response": "12345",
             "created_at": "2024-07-28",
             "difficulty": "Easy"
         },
@@ -335,18 +311,6 @@
             "response": "A",
             "created_at": "2024-07-28",
             "difficulty": "Medium"
-        },
-        {
-            "title": "Manipulação de Arquivos",
-            "subtitle": "Leitura e Escrita de Arquivos",
-            "example": "Exemplo: FileReader fr = new FileReader(\"arquivo.txt\");",
-            "type_question": "code",
-            "question": "Escreva um código que abra um arquivo chamado 'dados.txt' em modo de leitura e imprima seu conteúdo. Imprima o conteúdo do arquivo para validação.",
-            "id_language": 3,
-            "xp_reward": 30,
-            "response": "Conteúdo do arquivo 'dados.txt'",
-            "created_at": "2024-07-28",
-            "difficulty": "True Challenge"
         },
         {
             "title": "Classes e Objetos",
@@ -404,7 +368,7 @@
             "question": "Escreva um loop que imprima os números de 1 a 5, cada um em uma linha separada.",
             "id_language": 4,
             "xp_reward": 15,
-            "response": "1<br>2<br>3<br>4<br>5",
+            "response": "12345",
             "created_at": "2024-07-28",
             "difficulty": "Easy"
         },
@@ -455,18 +419,6 @@
             "response": "C",
             "created_at": "2024-07-28",
             "difficulty": "Medium"
-        },
-        {
-            "title": "Manipulação de Arquivos",
-            "subtitle": "Leitura e Escrita de Arquivos",
-            "example": "Exemplo: use std::fs::File;",
-            "type_question": "code",
-            "question": "Escreva um código que abra um arquivo chamado 'dados.txt' em modo de leitura e imprima seu conteúdo. Imprima o conteúdo do arquivo para validação.",
-            "id_language": 4,
-            "xp_reward": 30,
-            "response": "Conteúdo do arquivo 'dados.txt'",
-            "created_at": "2024-07-28",
-            "difficulty": "True Challenge"
         },
         {
             "title": "Estruturas em Rust",
