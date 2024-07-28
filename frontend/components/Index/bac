@@ -1,0 +1,74 @@
+<template>
+    <header>
+        <section class="logo-section">
+            <img class="logo" src="../../../shared/images/Logo.png" alt="">
+            <ul class="menu">
+                <li>Home</li>
+                <li>About</li>
+                <li>Pricing</li>
+                <li>Team</li>
+                <li>Contact</li>
+            </ul>
+            <div class="flex flex-row justify-center gap-x-[20px]">
+                    <UButton variant="outline" class="text-sm h-10 w-[150px] justify-center align-middle" type="submit">
+                    Criar Conta
+                    </UButton>
+                    <UButton  class="text-sm h-10 w-[150px] justify-center align-middle bg-transparent"
+                        type="submit">Entrar</UButton>
+                </div>
+        </section>
+        
+
+
+    </header>
+</template>
+
+<script setup>
+
+</script>
+
+<style lang="scss" scoped>
+
+header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 10%;
+    background-color: var(--Background);
+}
+
+.logo {
+    width: 200px;
+    height: 100%;
+}
+
+.logo-section {
+    display: flex;
+    width: 100%;
+    max-width: 1920px;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu {
+    display: flex;
+    width: 100%;
+    max-width: 1920px;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.menu li:hover {
+    color: var(--Primary);
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: underline;
+    text-underline-offset: 10px;
+    text-decoration-color: var(--Primary);
+    transition: all 0.5s;
+}
+
+</style>

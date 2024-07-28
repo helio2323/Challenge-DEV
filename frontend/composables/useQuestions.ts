@@ -5,7 +5,6 @@ export default function useQuestions() {
     const question = ref<any>(null);
     const error = ref<null | Error>(null);
     const loading = ref(false);
-
     const fetchAllQuestions = async () => {
         loading.value = true;
         try {
@@ -22,7 +21,6 @@ export default function useQuestions() {
             }
             const result = await response.json(); // Converte a resposta para JSON
             questions.value = result;
-            console.log(result);
         } catch (err) {
             error.value = err as Error;
             console.error('Erro ao fazer a requisição:', err);

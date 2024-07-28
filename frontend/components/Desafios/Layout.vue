@@ -10,6 +10,7 @@
 <script setup>
 
 
+
 </script>
 
 <style scoped>
@@ -22,6 +23,7 @@
     width: 100%;
     height: 100%;
     background-color: var(--BackCover);
+    border-radius: 15px;
 }
 
 .challeng-sec{

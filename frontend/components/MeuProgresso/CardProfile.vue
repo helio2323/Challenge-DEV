@@ -1,6 +1,6 @@
 <template>
     <main class="main-card-profile">
-      <h2>Atividades</h2>
+      <h2>Nível Atual</h2>
       <div class="card-profile"> 
         <div class="image">
           <img src="https://cdn3d.iconscout.com/3d/premium/thumb/python-6815592-5602757.png?f=webp" alt="">

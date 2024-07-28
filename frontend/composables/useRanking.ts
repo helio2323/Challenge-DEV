@@ -22,7 +22,6 @@ export default function useRanking() {
             }
             const result = await response.json();
             ranking.value = result;  // Atualiza a variável global
-            console.log('Weekly Ranking:', result);
             return result;  // Certifique-se de que a função retorna os dados
         } catch (err) {
             error.value = err as Error;
@@ -53,7 +52,6 @@ export default function useRanking() {
             }
     
             const result = await response.json();
-            console.log('Daily Ranking:', result);  // Adicione logs para depuração
             return result;  // Certifique-se de que a função retorna os dados
         } catch (error) {
             console.error('There was a problem with the fetch operation:', error);

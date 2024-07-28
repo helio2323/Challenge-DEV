@@ -47,9 +47,6 @@ onMounted(async () => {
         ...question,
         responded: userResponses.value.some(response => response.question_id === question.id)
     }));
-
-    // Exibe o conteúdo de filteredQuestions para depuração
-    console.log("filteredQuestions", filteredQuestions.value);
 });
 
 const imageUrl = computed(() => {

@@ -29,14 +29,14 @@
 
 <script setup>
 const props = defineProps({
-  id_question: Number,
+  id_question: [Number, String],
   title: String,
   subtitle: String,
   exemplo: String,
   tipodesafio: String,
   pergunta: String,
-  linguagem: String,
-  xpreward: String,
+  linguagem: [String, Number],
+  xpreward: [String, Number],
   resposta: String,
   dificuldade: String,
   srcUrl: {
