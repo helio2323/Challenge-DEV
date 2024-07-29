@@ -23,7 +23,7 @@ export async function createQuestion(title, subtitle, example, type_question, qu
             })
         };
 
-        const fetchResponse = await fetch(`http://localhost:5000/api/v1/createquestion`, requestOptions);
+        const fetchResponse = await fetch(`https://api.challengedev.tech/api/v1/createquestion`, requestOptions);
         const qResponse = await fetchResponse.json();
 
         if (qResponse.message === "Question created") {
@@ -62,7 +62,7 @@ export async function updateQuestion(id, title, subtitle, example, type_question
             })
         };
 
-        const fetchResponse = await fetch(`http://localhost:5000/api/v1/updatequestion`, requestOptions);
+        const fetchResponse = await fetch(`https://api.challengedev.tech/api/v1/updatequestion`, requestOptions);
         const qResponse = await fetchResponse.json();
 
         if (qResponse.message === "Question created") {
@@ -92,7 +92,7 @@ export async function deleteQuestion(id) {
             })
         };
 
-        const fetchResponse = await fetch(`http://localhost:5000/api/v1/deletequestion`, requestOptions);
+        const fetchResponse = await fetch(`https://api.challengedev.tech/api/v1/deletequestion`, requestOptions);
         const qResponse = await fetchResponse.json();
 
         if (qResponse.message === "Question deleted") {
@@ -118,7 +118,7 @@ export async function getResponses(){
             redirect: 'follow'
         };
 
-        const response = await fetch(`http://localhost:5000/api/v1/responses`, requestOptions);
+        const response = await fetch(`https://api.challengedev.tech/api/v1/responses`, requestOptions);
         const result = await response.json(); // Converte a resposta para JSON
         return result;
 

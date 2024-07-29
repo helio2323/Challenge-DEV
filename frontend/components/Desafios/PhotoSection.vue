@@ -24,11 +24,12 @@
     display: flex;
     flex-direction: column;
     background-color: red;
-    height: 250px;
+    height: 450px;
     border-radius: 20px 20px 0px 0px;
     background-image: url('../../shared/images/ww-one-bit.jpg');
     background-size: cover;
     background-position: center;
+    
 }
 
 .cover-photo {
@@ -40,6 +41,7 @@
     flex-direction: column;
     padding: 20px;
     gap: 10px;
+    
 }
 
 

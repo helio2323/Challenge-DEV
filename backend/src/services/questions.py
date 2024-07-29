@@ -40,7 +40,7 @@ def create_question(title, subtitle, example, type_question, question, id_langua
 def get_all_questions():
     questions = Questions.get_all_questions()
     questions = transform_objects_to_json(questions, id="id", title="title", subtitle="subtitle", example="example", type_question="type_question", question="question", id_language="id_language", xp_reward="xp_reward", response="response", created_at="created_at", dificulty="dificulty")
-
+    
     return questions
 
 def get_one_questions(id):

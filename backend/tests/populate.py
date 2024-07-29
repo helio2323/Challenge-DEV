@@ -34,5 +34,5 @@ for question in data['questions']:
         "dificulty": question['difficulty']
     }
 
-    requests.post("http://51.222.155.217:5000/api/v1/createquestion", json=json_data)
+    requests.post("http://167.88.33.24:5000/api/v1/createquestion", json=json_data)
 

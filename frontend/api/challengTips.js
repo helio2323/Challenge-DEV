@@ -20,7 +20,7 @@ export async function verifyCode(type_question, question_id, question_response, 
   };
   Loading.value = true
   try {
-      const response = await fetch("http://localhost:5000/api/v1/verify", requestOptions);
+      const response = await fetch("https://api.challengedev.tech/api/v1/verify", requestOptions);
       if (response.headers.get("content-type")?.includes("application/json")) {
           const result = await response.json();
           Loading.value = false
@@ -57,7 +57,7 @@ export async function submitCode(type_question, question_id, question_response, 
   };
   Loading.value = true
   try {
-      const response = await fetch("http://localhost:5000/api/v1/submit", requestOptions);
+      const response = await fetch("https://api.challengedev.tech/api/v1/submit", requestOptions);
       if (response.headers.get("content-type")?.includes("application/json")) {
           const result = await response.json();
           Loading.value = false

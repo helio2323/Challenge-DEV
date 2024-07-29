@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, make_response, request
+from flask import Blueprint, jsonify, make_response, request, json
 from src.services.questions import get_all_questions,get_one_questions, create_question, get_one_questions, update_question, delete_question
 
 question_routes = Blueprint("question_routes", __name__)
@@ -32,7 +32,8 @@ async def createquestion():
 
 @question_routes.route("getallquestions", methods=["GET"])
 async def getallquestions():
-    return get_all_questions()
+    json_obj = json.loads(get_all_questions())
+    return json_obj
 
 @question_routes.route("getonequestion", methods=["POST"])
 async def getonequestion():

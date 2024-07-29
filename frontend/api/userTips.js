@@ -9,7 +9,7 @@ export async function getUserInfos(id){
             redirect: 'follow'
         };
 
-        const response = await fetch(`http://localhost:5000/api/v1/user/${id}`, requestOptions);
+        const response = await fetch(`https://api.challengedev.tech/api/v1/user/${id}`, requestOptions);
         const result = await response.json(); // Converte a resposta para JSON
         return result;
 

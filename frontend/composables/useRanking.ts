@@ -9,7 +9,7 @@ export default function useRanking() {
     const fetchAllRanking = async () => {
         loading.value = true;
         try {
-            const response = await fetch("http://localhost:5000/api/v1/ranking", {
+            const response = await fetch("https://api.challengedev.tech/api/v1/ranking", {
                 method: 'GET',
                 headers: {
                     "Content-Type": "application/json",
@@ -45,7 +45,7 @@ export default function useRanking() {
         };
     
         try {
-            const response = await fetch("http://127.0.0.1:5000/api/v1/dailyranking", requestOptions);
+            const response = await fetch("https://api.challengedev.tech/api/v1/dailyranking", requestOptions);
             
             if (!response.ok) {
                 throw new Error('Network response was not ok');

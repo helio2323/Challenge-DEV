@@ -10,7 +10,7 @@ export async function getLanguages(languageName?: string, languageId?: number) {
         };
 
         // Faz a chamada para a API para obter a lista de linguagens
-        const response = await fetch(`http://localhost:5000/api/v1/languages`, requestOptions);
+        const response = await fetch(`https://api.challengedev.tech/api/v1/languages`, requestOptions);
         if (!response.ok) {
             // Se a resposta não for ok, lança um erro
             throw new Error('Network response was not ok');

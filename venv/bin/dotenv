@@ -1,4 +1,4 @@
-#!/home/helio/Documentos/GitHub/OneBitDev/venv/bin/python3
+#!/root/OneBitDev/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

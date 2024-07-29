@@ -25,7 +25,7 @@ export function useCompLevel() {
         };
     
         try {
-            const response = await fetch("http://localhost:5000/api/v1/userlevel", requestOptions);
+            const response = await fetch("https://api.challengedev.tech/api/v1/userlevel", requestOptions);
             
             if (!response.ok) {
                 throw new Error('Network response was not ok');
