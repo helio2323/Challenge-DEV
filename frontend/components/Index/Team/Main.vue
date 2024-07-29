@@ -29,6 +29,7 @@
     width: 100%;
     height: 100%;
     margin-top: 60px;
+    padding: 10px;
 }
 
 .section-testemunhas {
@@ -76,6 +77,29 @@ strong {
     gap: 20px;
     margin-bottom: 50px;
 
+}
+
+@media screen and (max-width: 1000px) {
+    .title-infos {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+
+    .title-infos h4 {
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .section-testemunhas{
+        width: 100%;
+    }
+    .title-infos {
+        width: 100%;
+        align-items: center;
+
+    }
 }
 
 

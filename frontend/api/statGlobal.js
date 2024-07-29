@@ -9,4 +9,5 @@ export const dificultyFilter = ref('Medium')
 export const challengeStar = ref({})
 export const monacoLanguage = ref('')
 export const responseQuestion = ref({})
+export const Loading = ref(false)
 

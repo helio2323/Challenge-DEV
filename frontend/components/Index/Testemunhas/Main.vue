@@ -5,7 +5,7 @@
                 <span>
                     <strong>Testemunhas</strong>
                 </span>
-                <h2>Veja oque nossos alunos dizem</h2>
+                <h2>Veja o que nossos alunos estão falando</h2>
                 <h4>
                     Estamos sempre focados na evolução constante dos nossos alunos
                     e no desenvolvimento de novos desafios.
@@ -73,7 +73,7 @@ strong {
     font-size: 18px;
     font-weight: 400;
     text-align: center;
-    width: 50%;
+    width: 80%;
     opacity: 0.5;
 }
 
@@ -90,5 +90,34 @@ strong {
 
 }
 
+@media screen and (max-width: 1000px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .title-infos {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+
+    .section-testemunhas {
+        width: 100%;
+    }
+
+    .title-infos h4 {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .title-infos h4 {
+        width: 95%;
+    }
+
+    .cards {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
 
 </style>

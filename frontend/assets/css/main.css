@@ -27,6 +27,11 @@ h3 {
     font-weight: 600;
 }
 
+h4 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
 /* Para telas menores que 1200px */
 @media (max-width: 1366px) {
     h1 {
@@ -54,5 +59,9 @@ h3 {
     }
     .card-features {
         grid-template-columns: 1fr;
+    }
+
+    h2 {
+        font-size: 30px;
     }
 }
