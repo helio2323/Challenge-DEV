@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { FormError, FormSubmitEvent } from '#ui/types'
-import {Loading} from '../frontend/api/statGlobal'
+import {Loading} from '../../api/statGlobal'
 
 import {register} from "../../api/authentication"
 

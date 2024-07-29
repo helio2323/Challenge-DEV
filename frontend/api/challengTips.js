@@ -1,4 +1,4 @@
-import {Loading} from '../frontend/api/statGlobal'
+import {Loading} from '../api/statGlobal'
 
 
 export async function verifyCode(type_question, question_id, question_response, language) {

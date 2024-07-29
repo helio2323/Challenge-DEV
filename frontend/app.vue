@@ -13,7 +13,7 @@
 
 <script setup>
 
-import {Loading} from '../frontend/api/statGlobal'
+import {Loading} from './api/statGlobal'
 
 
 useSeoMeta

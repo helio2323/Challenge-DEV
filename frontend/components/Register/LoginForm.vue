@@ -2,7 +2,7 @@
 import type { FormError, FormSubmitEvent } from '#ui/types'
 
 import {login} from "../../api/authentication"
-import {Loading} from '../frontend/api/statGlobal'
+import {Loading} from '../../api/statGlobal'
 
 const state = reactive({
   email: "",
