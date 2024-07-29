@@ -110,6 +110,14 @@ strong {
     .card-features {
         grid-template-columns: 1fr;
     }
+
+    .ud-features{
+        padding: 10px;
+    }
+
+    .content-features h2 {
+       width: 100%;
+    }
 }
 
 

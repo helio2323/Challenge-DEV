@@ -11,7 +11,7 @@
 
                 <h3>Acreditamos que o conhecimento deve ser uma fonte gratuita </h3>
 
-                <p>Acreditamos que o conhecimento deve ser uma fonte gratuita e acessível para todos. Nossa missão é democratizar a educação, garantindo que qualquer pessoa, independentemente de sua localização geográfica ou condição financeira, tenha acesso às ferramentas e recursos necessários para aprender e crescer.
+                <p>Acreditamos que o conhecimento deve ser acessível para todos. Nossa missão é democratizar a educação, garantindo que qualquer pessoa, independentemente de sua localização geográfica ou condição financeira, tenha acesso às ferramentas e recursos necessários para aprender e crescer.
                 </p>
 
                 <p>Ao promover a troca livre de informações e a colaboração global, aspiramos a criar uma comunidade onde o aprendizado contínuo e o desenvolvimento pessoal sejam valorizados e incentivados.

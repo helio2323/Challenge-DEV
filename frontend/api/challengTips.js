@@ -1,3 +1,6 @@
+import {Loading} from '../frontend/api/statGlobal'
+
+
 export async function verifyCode(type_question, question_id, question_response, language) {
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
@@ -15,17 +18,20 @@ export async function verifyCode(type_question, question_id, question_response, 
       body: raw,
       redirect: "follow"
   };
-  
+  Loading.value = true
   try {
       const response = await fetch("http://localhost:5000/api/v1/verify", requestOptions);
       if (response.headers.get("content-type")?.includes("application/json")) {
           const result = await response.json();
+          Loading.value = false
           return result;  // Retorne o resultado para a função chamadora
       } else {
+            Loading.value = false
           throw new Error("Resposta não é JSON");
       }
   } catch (error) {
       console.error("Erro:", error);
+      Loading.value = false
       throw error;  // Lance o erro para que a função chamadora possa tratá-lo
   }
 }
@@ -49,16 +55,19 @@ export async function submitCode(type_question, question_id, question_response, 
       body: raw,
       redirect: "follow"
   };
-  
+  Loading.value = true
   try {
       const response = await fetch("http://localhost:5000/api/v1/submit", requestOptions);
       if (response.headers.get("content-type")?.includes("application/json")) {
           const result = await response.json();
+          Loading.value = false
           return result;  // Retorne o resultado para a função chamadora
       } else {
+            Loading.value = false
           throw new Error("Resposta não é JSON");
       }
   } catch (error) {
+    Loading.value = false
       console.error("Erro:", error);
       throw error;  // Lance o erro para que a função chamadora possa tratá-lo
   }

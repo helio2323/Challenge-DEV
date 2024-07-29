@@ -9,7 +9,7 @@
 
                 <div class="flex flex-row justify-center gap-x-[20px]">
                     <UButton @click="handleGOTO" class="text-xl h-14 btn justify-center align-middle" type="submit">
-                    Começar Agra!
+                    Começar Agora!
                     </UButton>
                     <NuxtLink to="https://github.com/helio2323/OneBitDev" target="_blank" >
                     <UButton variant="outline" class="text-xl h-14 btn justify-center align-middle bg-transparent"
@@ -135,7 +135,13 @@ const handleGOTO = () => {
 
 /* Para telas menores que 600px */
 @media (max-width: 600px) {
+    .hero-text {
+        width: 100%;
+    }
 
+    .hero-text p {
+        width: 100%;
+    }
 }
 
 

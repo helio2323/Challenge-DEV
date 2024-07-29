@@ -2,6 +2,7 @@
 import type { FormError, FormSubmitEvent } from '#ui/types'
 
 import {login} from "../../api/authentication"
+import {Loading} from '../frontend/api/statGlobal'
 
 const state = reactive({
   email: "",
@@ -28,7 +29,7 @@ async function onSubmit(event: FormSubmitEvent<any>) {
     const email = event.data.email;
     const password = event.data.password;
     
-    
+    Loading.value = true
     try {
         // Usar await na chamada da API
         const response = await login(email, password);
@@ -48,14 +49,16 @@ async function onSubmit(event: FormSubmitEvent<any>) {
             localStorage.setItem('status', 'Logged in');
             
             navigateTo('/desafios');
-
+            Loading.value = false
        } else {
             console.log("Erro: ", response.message);
+            Loading.value = false
             //mensagem de alerta
             errors.push({ path: 'password', message: 'Required' })
 
        }
     } catch (error) {
+        Loading.value = false
         console.log('Erro ao registrar:', error);
         toast.add({ title: 'Erro ao logar', click: onClick, color: 'red', position: 'top-0 right-50' })
     }

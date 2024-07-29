@@ -26,7 +26,7 @@ const props = defineProps ({
     },
     callToAction: {
         type: String,
-        default: 'Começar Agra!'
+        default: 'Começar Agora!'
     },
     imgLogo: {
         type: String,

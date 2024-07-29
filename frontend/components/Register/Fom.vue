@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { FormError, FormSubmitEvent } from '#ui/types'
+import {Loading} from '../frontend/api/statGlobal'
 
 import {register} from "../../api/authentication"
 
@@ -33,7 +34,7 @@ async function onSubmit(event: FormSubmitEvent<any>) {
     const name = event.data.nome;
     const email = event.data.email;
     const password = event.data.password;
-    
+    Loading.value = true
     try {
         // Usar await na chamada da API
         const response = await register(name, email, password);
@@ -41,11 +42,13 @@ async function onSubmit(event: FormSubmitEvent<any>) {
         if (response.message === "User created") { // Verificar o conteúdo da resposta
             // Redirecionar para login
             navigateTo('/login')
+            Loading.value = false
         } else {
             console.log("Erro: ", response.message);
-            
+            Loading.value = false
         }
     } catch (error) {
+        Loading.value = false
         console.log('Erro ao registrar:', error);
         
         

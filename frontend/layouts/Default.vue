@@ -25,6 +25,8 @@ const handleIndex = () => {
     navigateTo('/meuprogresso')
 }
 
+
+
 </script>
 
 <style scoped>
