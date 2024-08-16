@@ -18,7 +18,7 @@
     "axios": "^1.7.2",
     "cors": "^2.8.5",
     "monaco-editor": "^0.50.0",
-    "nuxt": "^3.12.3",
+    "nuxt": "^3.12.4",
     "nuxt-monaco-editor": "^1.2.9",
     "vue": "latest"
   },
