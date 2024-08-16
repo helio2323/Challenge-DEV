@@ -20,3 +20,13 @@ def get_one_challenge(id):
     })
     return json.loads(challenge_json)
 
+# criar nova maneira de validar os desafios
+
+def create_a_new_challenge_type(type_challenge, xp_rewarid):
+    try:
+        challeng = Challenge.create_challenge(type_challenge, xp_rewarid)
+    except SQLAlchemyError as e:
+        print(f'Error creating challenge: {e}')
+        return None
+    
+    
